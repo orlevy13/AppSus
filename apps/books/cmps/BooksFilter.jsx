@@ -23,10 +23,10 @@ export default class BookDetails extends React.Component {
         this.props.onSetFilter(this.state.filter)
     }
 
-
-
     render() {
+
         const { title, minPrice, maxPrice } = this.state.filter;
+
         return (
             <section className="filter-books flex coloumn align-center">
                 <form onSubmit={this.onFilter} className="filter-form flex justify-center">
@@ -36,10 +36,8 @@ export default class BookDetails extends React.Component {
                     <input type="number" name='minPrice' value={minPrice} onChange={this.handleChange} />
                     <label htmlFor="">max price:</label>
                     <input type="number" name='maxPrice' value={maxPrice} onChange={this.handleChange} />
-                    <button hidden>Filter</button>
                 </form>
             </section>
-
         )
     }
 }

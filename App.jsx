@@ -22,7 +22,6 @@ export class App extends React.Component {
     render() {
         return (
             <Router>
-                <div className="container flex column align-center">
                     <AppHeader history={history} />
                     <UserMsg />
                     <main>
@@ -40,8 +39,6 @@ export class App extends React.Component {
                             <Route exact component={Home} path="/" />
                         </Switch>
                     </main>
-                </div>
-
             </Router >
         )
     }

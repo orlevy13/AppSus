@@ -6,9 +6,7 @@ export default class EmailApp extends React.Component {
 
     render() {
         return (
-            <section>
-                <h1>Email app</h1>
-                
+            <section className="inbox-page flex">
                 <SideBar></SideBar>
                 <EmailList></EmailList>
             </section>

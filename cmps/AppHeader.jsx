@@ -5,8 +5,8 @@ export default class AppHeader extends React.Component {
 
     render() {
         return (
-            <header className="flex space-between align-center">
-                <h1 className="logo">Miss Books</h1>
+            <header className="flex space-between">
+                <h1 className="logo">Appsus</h1>
                 <SearchBar></SearchBar>
                 <NavBar />
             </header>

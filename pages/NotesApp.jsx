@@ -8,9 +8,9 @@ export default class NotesApp extends React.Component {
 
     render() {
         return (
-            <section>
-                <h1>Notes</h1>
+            <section className="notes-page">
                 <AddNote></AddNote>
+                
                 <PinnedList></PinnedList>
                 <UnPinnedList></UnPinnedList>
             </section>

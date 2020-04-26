@@ -2,7 +2,7 @@ export default class AddNote extends React.Component {
 
     render() {
         return (
-            <input type="text"/>
+            <input className="add-note" type="text" placeholder="What's on your mind..."/>
         )
     }
 } 

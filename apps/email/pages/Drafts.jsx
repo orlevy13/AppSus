@@ -3,7 +3,7 @@ import EmailList from '../cmps/EmailList.jsx';
 
 export default function Drafts() {
     return (
-        <section>
+        <section className="drafts-page flex">
             <SideBar></SideBar>
             <EmailList></EmailList>
         </section>
