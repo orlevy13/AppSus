@@ -12,5 +12,4 @@ export default class AppHeader extends React.Component {
             </header>
         )
     }
-
 }
