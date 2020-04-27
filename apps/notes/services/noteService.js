@@ -1,6 +1,7 @@
-export default { addNote, getUnPinnedNotes, getPinnedNotes, togglePinNote }
 import storageService from '../../../services/storageService.js';
-import utilService from '../../../services/utilService.js'
+import utilService from '../../../services/utilService.js';
+
+export default { addNote, getUnPinnedNotes, getPinnedNotes, togglePinNote, query }
 
 const KEY = 'notes';
 
@@ -10,18 +11,35 @@ function togglePinNote(noteId) {
     storageService.store(KEY, gNotes)
 }
 
-function getUnPinnedNotes() {
-    return gNotes.filter(note => !note.isPinned);
+function query(filterBy) {
+    if (!filterBy) return Promise.resolve(gNotes);
+    if (filterBy) console.log('THERE\'S A FILTER BUT THE FUNCTION DOESN\'T ACTUALLY FILTER!!')
 }
 
-function getPinnedNotes() {
-    return gNotes.filter(note => note.isPinned);
+function getUnPinnedNotes(notes) {
+    return notes.filter(note => !note.isPinned);
 }
+// function getUnPinnedNotes() {
+//     return gNotes.filter(note => !note.isPinned);
+// }
+
+function getPinnedNotes(notes) {
+    return notes.filter(note => note.isPinned);
+}
+// function getPinnedNotes() {
+//     return gNotes.filter(note => note.isPinned);
+// }
 
 function addNote(note) {
     switch (note.type) {
         case 'NoteTxt':
             return addNoteTxt(note);
+        case 'NoteImg':
+            return addNoteImg(note);
+        case 'NoteVid':
+            return addNoteVid(note);
+        case 'NoteTodo':
+            return addNoteTodo(note);
     }
 }
 
@@ -30,10 +48,28 @@ function addNoteTxt(note) {
     const noteToAdd = {
         type,
         isPinned: false,
-        txt
+        txt,
+        id: utilService.makeId()
     }
     gNotes.unshift(noteToAdd);
-    storageService.store(KEY, gNotes)
+    storageService.store(KEY, gNotes);
+    return Promise.resolve(noteToAdd);
+}
+
+function addNoteImg(note) {
+    const { type, txt } = note;
+    const noteToAdd = {
+        type,
+        info: {
+            url: txt,
+            title: "My image"
+        },
+        style: {
+            backgroundColor: "#00d"
+        }
+    }
+    gNotes.unshift(noteToAdd);
+    storageService.store(KEY, gNotes);
 }
 
 var gNotes = [

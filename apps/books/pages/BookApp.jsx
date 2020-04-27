@@ -37,7 +37,6 @@ export default class BookApp extends React.Component {
     }
 
     onSetFilter = (filterBy) => {
-        console.log(filterBy);
         this.setState({ filterBy }, () => this.loadBooks());
     }
 

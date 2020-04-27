@@ -1,5 +1,6 @@
 const { Link } = ReactRouterDOM
 import BookService from '../services/bookService.js'
+
 export default function BookPreview(props) {
     const { book } = props;
 

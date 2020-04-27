@@ -7,7 +7,7 @@ export default function Sent() {
         <section className="compose-page flex">
             <SideBar></SideBar>
             <div className="email-list">
-                <EmailList emails={emailService.getEmails('all')}></EmailList>
+                <EmailList emails={emailService.getEmails('sent')}></EmailList>
             </div>
         </section>
     )

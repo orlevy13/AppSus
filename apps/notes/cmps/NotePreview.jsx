@@ -1,22 +1,16 @@
-import noteService from '../services/noteService.js'
+import NoteTxt from './NoteTxt.jsx';
+
 
 export default function NotePreview(props) {
-	switch (props.note.type) {
-		case "NoteTxt":
-			return (
-				<article className="notes-preview ">
-                    <p>{props.note.txt}</p>
-                    {props.note.isPinned && <button onClick={() => {
-                        noteService.togglePinNote(props.note.id);
-                        props.pinToggled()
-                    }} >UnPin</button>}
-                    {!props.note.isPinned && <button onClick={() => {
-                        noteService.togglePinNote(props.note.id);
-                        props.pinToggled()
-                    }} >Pin</button>}
-				</article>
-			);
-		default:
-			break;
-	}
+    const { note } = props
+    switch (note.type) {
+        case "NoteTxt":
+            return <NoteTxt note={note} />
+        case "NoteImg":
+            return <NoteImg note={note} />
+        case "NoteVid":
+            return <NoteVid note={note} />
+        case "NoteTodo":
+            return <NoteTodo note={note} />
+    }
 }
