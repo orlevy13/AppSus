@@ -7,9 +7,9 @@ const { NavLink } = ReactRouterDOM;
 export default function SideBar() {
 
     return (
-        <section>
+        <section className="side-bar">
 
-            <NavLink exact to='/compose'><button>Compose</button></NavLink>
+            <NavLink exact to='/compose'><button className="compose-btn">Compose</button></NavLink>
             <NavBar></NavBar>
             <EmailStatus></EmailStatus>
         </section>

@@ -1,6 +1,5 @@
 @import 'helpers.css';
 @import 'basics.css';
-
 body {
     margin: 0;
     background-color: lightblue;
@@ -20,4 +19,30 @@ header {
 
 .notes-page {
     width: 100%;
+}
+
+/* Email app */
+
+/* side bar */
+
+.side-bar {
+    position: fixed;
+    width: 200px;
+    padding-left: 15px;
+}
+
+.email-list {
+    margin-left: 200px;
+}
+
+.compose-btn {
+    margin: 30px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.nav-bar li  {
+    padding: 5px 0;
+    width: 100%;
+    border: 1px solid black;
 }

@@ -6,7 +6,9 @@ export default class Compose extends React.Component {
         return (
             <section className="compose-page flex">
                 <SideBar></SideBar>
-                <p>Compose</p>
+                <div className="email-list">
+                    <p>Compose</p>
+                </div>
             </section>
         )
     }

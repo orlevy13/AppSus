@@ -4,10 +4,10 @@ export default function NavBar() {
     return (
         <nav>
             <ul className="nav-bar clean-list">
-                <li><NavLink exact to='/email'>Inbox</NavLink></li>
-                <li><NavLink exact to='/starred'>Starred</NavLink></li>
-                <li><NavLink exact to='/sent'>Sent</NavLink></li>
-                <li><NavLink exact to='/drafts'>Drafts</NavLink></li>
+                <NavLink exact to='/email'><li>Inbox</li></NavLink>
+                <NavLink exact to='/starred'><li>Starred</li></NavLink>
+                <NavLink exact to='/sent'><li>Sent</li></NavLink>
+                <NavLink exact to='/drafts'><li>Drafts</li></NavLink>
             </ul>
         </nav>
     )
