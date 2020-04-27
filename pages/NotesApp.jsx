@@ -1,16 +1,22 @@
 import AddNote from '../apps/notes/cmps/AddNote.jsx';
-// import PinnedList from '../apps/notes/cmps/PinnedList.jsx';
-// import UnPinnedList from '../apps/notes/cmps/UnPinnedList.jsx';
 import NotesList from '../apps/notes/cmps/NotesList.jsx';
 
 
 export default class NotesApp extends React.Component {
 
+    state = {
+        noteAdd: false,
+    };
+
+    noteAdded = () => {
+        this.setState((prevState) => ({ noteAdd: !prevState.noteAdd }));
+    };
 
     render() {
+        const { noteAdded } = this;
         return (
             <section className="notes-page flex column justify-center">
-                <AddNote></AddNote>
+                <AddNote noteAdded={noteAdded} />
                 <NotesList />
             </section>
         )
