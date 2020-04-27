@@ -25,9 +25,10 @@ export default class NotesApp extends React.Component {
 
     // function onAddNote(note) - request to add note in service, reuse of the function loadNotes()
     onAddNote = (note) => {
+        console.log('noteService.addNote(note)', noteService.addNote(note))
         noteService.addNote(note)
-            .then((note) => {this.loadNotes()});
-        // this.loadNotes();
+            .then((note) => this.loadNotes());
+
     }
 
     // render - sent notes from state to notelist + function onAddNote

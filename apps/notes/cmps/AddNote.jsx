@@ -18,20 +18,24 @@ export default class AddNote extends React.Component {
 
     render() {
 
-        const { txt, type } = this.state;
+        const { txt } = this.state;
         return (
-            <div onChange={this.handleChange}>
-                <input value={txt} placeholder="What's on your mind..?" type="text" />
-                <label htmlFor="txt">text</label>
-                <input name="txt" value="txt" type="radio" />
-                <label htmlFor="img">image</label>
-                <input name="img" value="img" type="radio" />
-                <label htmlFor="vid">video</label>
-                <input name="vid" value="video" type="radio" />
-                <button onClick={
-                    this.props.onAddNote(this.state)
-                } >Add</button>
-            </div>
+            <form onChange={this.handleChange}>
+                <input name="txt" value={txt} placeholder="What's on your mind..?" type="text" />
+                <label>text</label>
+                <input name="type" value="NoteTxt" type="radio" />
+                <label>image</label>
+                <input name="type" value="NoteImg" type="radio" />
+                <label>video</label>
+                <input name="type" value="NoteVid" type="radio" />
+                <label>todo</label>
+                <input name="type" value="NoteTodo" type="radio" />
+                <button onClick={() => {
+                    this.props.onAddNote(this.state);
+                    console.log('clicked add!');
+
+                }} >Add</button>
+            </form >
         )
     }
 }

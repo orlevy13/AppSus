@@ -32,33 +32,37 @@ function getPinnedNotes(notes) {
 
 function deleteNote(noteId) {
     console.log('delete');
-    
+
 }
 
 function addNote(note) {
     switch (note.type) {
         case 'NoteTxt':
-            return addNoteTxt(note);
+            return Promise.resolve(addNoteTxt(note))
         case 'NoteImg':
             return addNoteImg(note);
         case 'NoteVid':
             return addNoteVid(note);
         case 'NoteTodo':
             return addNoteTodo(note);
+        default:
+            console.log('got to default');
+
+            return Promise.resolve(addNoteTxt(note));
     }
 }
 
 function addNoteTxt(note) {
     const { type, txt } = note
     const noteToAdd = {
+        id: utilService.makeId(4),
         type,
         isPinned: false,
-        txt,
-        id: utilService.makeId()
+        txt
     }
     gNotes.unshift(noteToAdd);
     storageService.store(KEY, gNotes);
-    return Promise.resolve(noteToAdd);
+    return noteToAdd;
 }
 
 function addNoteImg(note) {
@@ -78,10 +82,10 @@ function addNoteImg(note) {
 }
 
 var gNotes = [
-    { id: utilService.makeId(4), type: "NoteTxt",isPinned: false,txt: "Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie!"},
+    { id: utilService.makeId(4), type: "NoteTxt", isPinned: false, txt: "Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie!" },
     { id: utilService.makeId(4), type: "NoteTxt", isPinned: false, txt: "Set State :)" },
     { id: utilService.makeId(4), type: "NoteTxt", isPinned: false, txt: "Remember the good times" },
-    { id: utilService.makeId(4), type: "NoteTxt",  isPinned: true, txt: "Codding is lovely" },
+    { id: utilService.makeId(4), type: "NoteTxt", isPinned: true, txt: "Codding is lovely" },
     { id: utilService.makeId(4), type: "NoteTxt", isPinned: true, txt: "try to delete me" },
     { id: utilService.makeId(4), type: "NoteTxt", isPinned: true, txt: "unpin me!" },
     // { id: utilService.makeId(4), type: "NoteImg", isPinned: true,  info: { url: "http://some-img/me", title: "Me playing Mi" }, style: { backgroundColor: "#00d" } },
