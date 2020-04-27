@@ -1,4 +1,6 @@
 import noteService from '../services/noteService.js';
+import eventBus from '../../../services/eventBusService.js'
+import NotePinBtn from '../cmps/NotePinBtn.jsx'
 
 
 export default function NoteTxt(props) {
@@ -6,12 +8,13 @@ export default function NoteTxt(props) {
         <article className="notes-preview ">
 
             <p>{props.note.txt}</p>
-            {props.note.isPinned && <button onClick={() => {
-                noteService.togglePinNote(props.note.id);
-            }} >UnPin</button>}
-            {!props.note.isPinned && <button onClick={() => {
-                noteService.togglePinNote(props.note.id);
-            }} >Pin</button>}
+            {props.note.isPinned && <NotePinBtn innerText={'UnPin'} />}
+            {!props.note.isPinned && <NotePinBtn innerText={'Pin'} />}
         </article>
     )
 }
+
+
+
+
+

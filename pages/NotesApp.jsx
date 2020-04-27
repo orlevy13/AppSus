@@ -1,7 +1,7 @@
 import AddNote from '../apps/notes/cmps/AddNote.jsx';
 import NotesList from '../apps/notes/cmps/NotesList.jsx';
 import noteService from '../apps/notes/services/noteService.js';
-
+import eventBus from '../services/eventBusService.js'
 
 export default class NotesApp extends React.Component {
 
@@ -12,6 +12,7 @@ export default class NotesApp extends React.Component {
     // didMount- loadNotes()
     componentDidMount() {
         this.loadNotes();
+        eventBus.on('togglePin', (isPinned) => this.loadNotes());
     }
 
     // function loadNotes() - will get notes from service with filterBy + update state
