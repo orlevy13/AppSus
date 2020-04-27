@@ -15,6 +15,7 @@ export default class NoteTxt extends React.Component {
 
     onAddNote = () => {
         noteService.addNote(this.state);
+        this.props.noteAdded();
     }
 
     render() {

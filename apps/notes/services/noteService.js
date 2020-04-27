@@ -1,15 +1,13 @@
-export default { addNote , getUnPinnedNotes , getPinnedNotes, togglePinNote }
+export default { addNote, getUnPinnedNotes, getPinnedNotes, togglePinNote }
 import storageService from '../../../services/storageService.js';
 import utilService from '../../../services/utilService.js'
 
 const KEY = 'notes';
 
 function togglePinNote(noteId) {
-    console.log(noteId);
     const note = gNotes.find(note => note.id === noteId)
-    note.isPinned = (note.isPinned) ? false : true;
-    console.log(note.isPinned);
-    
+    note.isPinned = !note.isPinned
+    storageService.store(KEY, gNotes)
 }
 
 function getUnPinnedNotes() {
@@ -17,14 +15,10 @@ function getUnPinnedNotes() {
 }
 
 function getPinnedNotes() {
-    const res = gNotes.filter(note => note.isPinned);
-    console.log(res);
-    
     return gNotes.filter(note => note.isPinned);
 }
 
 function addNote(note) {
-    console.log('addNote, note:', note)
     switch (note.type) {
         case 'NoteTxt':
             return addNoteTxt(note);
@@ -41,7 +35,6 @@ function addNoteTxt(note) {
     gNotes.unshift(noteToAdd);
     storageService.store(KEY, gNotes)
 }
-
 
 var gNotes = [
     {
@@ -103,3 +96,5 @@ var gNotes = [
     //     }
     // }
 ];
+
+gNotes = storageService.load(KEY) || gNotes;

@@ -11,7 +11,7 @@ export default class AddNote extends React.Component {
         const { noteType } = this.state;
         switch (noteType) {
             case 'NoteTxt':
-                return <NoteTxt onChangeType={this.onChangeType} />
+                return <NoteTxt noteAdded={this.props.noteAdded} onChangeType={this.onChangeType} />
             case 'NoteImg':
                 return <NoteImg onChangeType={this.onChangeType} />
             case 'NoteTodos':

@@ -8,7 +8,6 @@ export default class NotesList extends React.Component {
 
 	pinToggled = () => {
 		this.setState((prevState) => ({ pinChange: !prevState.pinChange }));
-		// this.setState(prevState => ({ isLongTxtShown: !prevState.isLongTxtShown }))
 	};
 
 	render() {
