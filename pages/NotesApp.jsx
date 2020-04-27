@@ -12,8 +12,6 @@ export default class NotesApp extends React.Component {
             <section className="notes-page flex column justify-center">
                 <AddNote></AddNote>
                 <NotesList />
-                {/* <PinnedList></PinnedList>
-                <UnPinnedList></UnPinnedList> */}
             </section>
         )
     }

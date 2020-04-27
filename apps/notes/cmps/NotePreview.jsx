@@ -7,12 +7,12 @@ export default function NotePreview(props) {
 				<article className="notes-preview ">
                     <p>{props.note.txt}</p>
                     {props.note.isPinned && <button onClick={() => {
-                        noteService.togglePinNote(props.note.id);
-                        props.pinToggled()
+                                            noteService.togglePinNote(props.note.id);
+                                            props.pinToggled()
                     }} >UnPin</button>}
                     {!props.note.isPinned && <button onClick={() => {
-                        noteService.togglePinNote(props.note.id);
-                        props.pinToggled()
+                                            noteService.togglePinNote(props.note.id);
+                                            props.pinToggled()
                     }} >Pin</button>}
 				</article>
 			);

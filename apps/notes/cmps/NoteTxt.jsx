@@ -21,16 +21,15 @@ export default class NoteTxt extends React.Component {
         const { txt } = this.state
         return (
             <div className="add-note">
+
                 <input name="txt" value={txt} onChange={this.handleChange} type="text" placeholder="What's on your mind..." />
-                <button onClick={() => {
-                    this.props.onChangeType('NoteImg')
-                }}>IMG</button>
-                <button onClick={() => {
-                    this.props.onChangeType('NoteTodos')
-                }}>TODOS</button>
-                <button onClick={() => {
-                    this.props.onChangeType('NoteVideo')
-                }}>VIDEO</button>
+
+                <button onClick={() => {this.props.onChangeType('NoteImg')}}>IMG</button>
+
+                <button onClick={() => {this.props.onChangeType('NoteTodos')}}>TODOS</button>
+
+                <button onClick={() => {this.props.onChangeType('NoteVideo')}}>VIDEO</button>
+
                 <button onClick={this.onAddNote}>add</button>
             </div>
         )
