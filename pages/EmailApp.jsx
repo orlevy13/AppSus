@@ -4,13 +4,29 @@ import emailService from '../apps/email/services/emailService.js';
 
 export default class EmailApp extends React.Component {
 
+    state = {
+        emails: null
+    }
+
+    componentDidMount() {
+        this.loadEmails();
+    }
+
+    loadEmails = () => {
+        emailService.query()
+            .then((emails) => this.setState({ emails }))
+            .catch((err) => {
+                console.log(err);
+            })
+    }
 
     render() {
+        const { emails } = this.state;
         return (
             <section className="inbox-page flex">
-                <SideBar></SideBar>
+                <SideBar />
                 <div className="email-list">
-                    <EmailList emails={emailService.getEmails('all')}></EmailList>
+                    {emails && <EmailList emails={emailService.getEmails('all')} />}
                 </div>
             </section>
         )

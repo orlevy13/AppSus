@@ -10,8 +10,8 @@ export default function SideBar() {
         <section className="side-bar">
 
             <NavLink exact to='/compose'><button className="compose-btn">+ Compose</button></NavLink>
-            <NavBar></NavBar>
-            <EmailStatus></EmailStatus>
+            <NavBar />
+            <EmailStatus />
         </section>
     )
 }
