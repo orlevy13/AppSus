@@ -5,7 +5,7 @@ export default class NoteTxt extends React.Component {
 
     state = {
         type: 'NoteTxt',
-        txt: 'Fullstack Me Baby!'
+        txt: ''
     }
 
     handleChange = ({ target }) => {
@@ -14,6 +14,7 @@ export default class NoteTxt extends React.Component {
     }
 
     onAddNote = () => {
+        if (!this.state.txt) return
         noteService.addNote(this.state);
         this.props.noteAdded();
     }

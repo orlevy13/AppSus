@@ -18,6 +18,11 @@ function getPinnedNotes() {
     return gNotes.filter(note => note.isPinned);
 }
 
+function deleteNote(noteId) {
+    console.log('delete');
+    
+}
+
 function addNote(note) {
     switch (note.type) {
         case 'NoteTxt':
@@ -37,64 +42,13 @@ function addNoteTxt(note) {
 }
 
 var gNotes = [
-    {
-        id: utilService.makeId(4),
-        type: "NoteTxt",
-        isPinned: false,
-        txt: "Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! "
-    },
-    {
-        id: utilService.makeId(4),
-        type: "NoteTxt",
-        isPinned: false,
-        txt: "Set State :)"
-    },
-    {
-        id: utilService.makeId(4),
-        type: "NoteTxt",
-        isPinned: false,
-        txt: "Remember the good times"
-    },
-    {
-        id: utilService.makeId(4),
-        type: "NoteTxt",
-        isPinned: true,
-        txt: "Codding is lovely"
-    },
-    {
-        id: utilService.makeId(4),
-        type: "NoteTxt",
-        isPinned: true,
-        txt: "try to delete me"
-    },
-    {
-        id: utilService.makeId(4),
-        type: "NoteTxt",
-        isPinned: true,
-        txt: "unpin me!"
-    },
-    // {
-    //     type: "NoteImg",
-    //     isPinned: true,
-    //     info: {
-    //         url: "http://some-img/me",
-    //         title: "Me playing Mi"
-    //     },
-    //     style: {
-    //         backgroundColor: "#00d"
-    //     }
-    // },
-    // {
-    //     type: "NoteTodos",
-    //     isPinned: true,
-    //     info: {
-    //         label: "How was it:",
-    //         todos: [
-    //             { txt: "Do that", doneAt: null },
-    //             { txt: "Do this", doneAt: 187111111 }
-    //         ]
-    //     }
-    // }
+    { id: utilService.makeId(4), type: "NoteTxt",isPinned: false,txt: "Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie!"},
+    { id: utilService.makeId(4), type: "NoteTxt", isPinned: false, txt: "Set State :)" },
+    { id: utilService.makeId(4), type: "NoteTxt", isPinned: false, txt: "Remember the good times" },
+    { id: utilService.makeId(4), type: "NoteTxt",  isPinned: true, txt: "Codding is lovely" },
+    { id: utilService.makeId(4), type: "NoteTxt", isPinned: true, txt: "try to delete me" },
+    { id: utilService.makeId(4), type: "NoteTxt", isPinned: true, txt: "unpin me!" },
+    // { id: utilService.makeId(4), type: "NoteImg", isPinned: true,  info: { url: "http://some-img/me", title: "Me playing Mi" }, style: { backgroundColor: "#00d" } },
+    // { id: utilService.makeId(4), type: "NoteTodos", isPinned: true, info: { label: "How was it:", todos: [{ txt: "Do that", doneAt: null },  { txt: "Do this", doneAt: 187111111 }]}}
 ];
-
 gNotes = storageService.load(KEY) || gNotes;

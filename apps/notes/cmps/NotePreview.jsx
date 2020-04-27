@@ -14,6 +14,10 @@ export default function NotePreview(props) {
                                             noteService.togglePinNote(props.note.id);
                                             props.pinToggled()
                     }} >Pin</button>}
+                    <button onClick={() => {
+                        noteService.deleteNote(props.note.id);
+                        //render deletion!
+                    }}>Delete</button>
 				</article>
 			);
 		default:

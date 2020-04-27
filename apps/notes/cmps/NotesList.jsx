@@ -22,13 +22,13 @@ export default class NotesList extends React.Component {
                 
                 {pinnedNotes.length !== 0 && (<div><p>pinned</p></div>)}
                 
-				<div className="notes-list flex wrap justify-center align-center">{pinnedNotes &&pinnedNotes.map((note,i) => (
-						<NotePreview key={i} note={note} pinToggled={pinToggled} />))}</div>
+				<div className="notes-list flex wrap justify-center align-center">{pinnedNotes &&pinnedNotes.map((note) => (
+						<NotePreview key={note.id} note={note} pinToggled={pinToggled} />))}</div>
                 
                 {unPinnedNotes.length !== 0 && (<div><p>others</p></div>)}
 
-				<div className="notes-list flex wrap justify-center align-center"> {unPinnedNotes &&unPinnedNotes.map((note,i) => (
-                    <NotePreview key={i} note={note} pinToggled={pinToggled} />))}</div>
+				<div className="notes-list flex wrap justify-center align-center"> {unPinnedNotes &&unPinnedNotes.map((note) => (
+                    <NotePreview key={note.id} note={note} pinToggled={pinToggled} />))}</div>
                 
 			</section>
 		);
