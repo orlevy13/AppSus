@@ -1,4 +1,7 @@
 export default { addNote }
+import storageService from '../../../services/storageService.js';
+
+const KEY = 'notes';
 
 function addNote(note) {
     console.log('addNote, note:', note)
@@ -9,16 +12,21 @@ function addNote(note) {
 }
 
 function addNoteTxt(note) {
-    return
+    const { type, txt } = note
+    const noteToAdd = {
+        type,
+        isPinned: false,
+        txt
+    }
+    gNotes.unshift(noteToAdd);
+    storageService.store(KEY, gNotes)
 }
 
-var notes = [
+var gNotes = [
     {
         type: "NoteText",
         isPinned: true,
-        info: {
-            txt: "Fullstack Me Baby!"
-        }
+        txt: "Fullstack Me Baby!"
     },
     {
         type: "NoteImg",

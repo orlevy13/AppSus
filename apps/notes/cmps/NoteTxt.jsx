@@ -5,7 +5,6 @@ export default class NoteTxt extends React.Component {
 
     state = {
         type: 'NoteTxt',
-        isPinned: false,
         txt: 'Fullstack Me Baby!'
     }
 
