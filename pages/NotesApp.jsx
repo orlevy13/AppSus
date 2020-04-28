@@ -45,9 +45,9 @@ export default class NotesApp extends React.Component {
         return (
             <section className="notes-page flex column justify-center align-center">
                 <AddNote onAddNote={onAddNote} />
-                {pinnedNotes.length !== 0 && <p>Pinned</p>}
+                {pinnedNotes.length !== 0 && <p className="pinned-others">PINNED</p>}
                 <NotesList notes={pinnedNotes} />
-                {unPinnedNotes.length !== 0 && <p>Others</p>}
+                {unPinnedNotes.length !== 0 && <p className="pinned-others">OTHERS</p>}
                 <NotesList notes={unPinnedNotes} />
             </section>
         )

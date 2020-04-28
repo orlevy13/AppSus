@@ -139,6 +139,6 @@ var gNotes = [
     { id: utilService.makeId(4), type: "NoteTxt", isPinned: true, txt: "This is a looong text: Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely " },
     { id: utilService.makeId(4), type: "NoteTxt", isPinned: true, txt: "try to delete me" },
     { id: utilService.makeId(4), type: "NoteTxt", isPinned: true, txt: "unpin me!" },
-    { id: utilService.makeId(4), type: "NoteTodo", isPinned: true, info: { label: "How was it:", todos: [{ id: utilService.makeId(4), txt: "Do that", doneAt: null }, { id: utilService.makeId(4), txt: "Do this", doneAt: 187111111 }] } }
+    { id: utilService.makeId(4), type: "NoteTodo", isPinned: true, info: { label: "Things for today", todos: [{ id: utilService.makeId(4), txt: "Do that", doneAt: null }, { id: utilService.makeId(4), txt: "Do this", doneAt: 187111111 }] } }
 ];
 gNotes = storageService.load(KEY) || gNotes;

@@ -15,17 +15,56 @@ header {
     background-color: tomato;
 }
 
-.add-note {
-    width: 500px;
-    margin: 0 auto;
+form {
+    width: 100%;
+    text-align: center;
+}
+
+label img {
+    cursor: pointer;
+}
+
+.intro-text {
+    color: grey;
+    padding: 10px;
+}
+.note-type-icons {
+    align-items: baseline;
+    padding: 10px;
+}
+
+.note-type-icons * {
+    margin-right: 10px ;
+    height: 40px;
+    vertical-align: middle;
+    
+}
+
+.note-type-icons * :checked {
+    background-color: black;
+}
+.note-type-icons input {
+    margin: 3px;
+}
+
+.note-add-text {     /*  SEARCH  */
+    padding: 15px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    width: 600px;
+    /* min-width: 400px; */
+    font-size: 1.2em;
+    margin: 10px;
+}
+.add-note-btn img {
+    width: 60px;
+    /* height: 50px; */
 }
 
 .notes-page {
     width: 100%;
 }
-
-
-/* Email app */
 
 /* Notes app */
 
@@ -33,11 +72,20 @@ header {
     width: 100%;
 }
 
+.pinned-others {
+    margin: 20px 10px 0;
+    color: lightgrey;
+}
+
+.notes-section {
+    columns: auto;
+}
+
 .note-preview {
     background-color: #fff;
-    margin: 10px;
-    padding: 20px;
-    max-width: 300px;
+    margin: 8px;
+    padding: 15px;
+    width: 300px;
     border: 1px solid lightgrey;
     border-radius: 10px;
     /* word-break: break-all; */

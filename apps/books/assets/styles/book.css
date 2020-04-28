@@ -130,13 +130,9 @@
     margin: 30px;
 }
 
-.details, .review-add, .review-preview, .long-txt, .description {
+.details, .review-add, .review-preview , .description {
     border: 1px solid #BDBDBD;
     padding: 30px;
-}
-
-.long-txt {
-    text-align: left;
 }
 
 .price {
@@ -238,6 +234,7 @@
 
 .long-txt {
     width: 100%;
+    text-align: left;
 }
 
 .book-details p {
