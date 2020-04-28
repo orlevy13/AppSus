@@ -1,6 +1,7 @@
 @import 'helpers.css';
 @import 'basics.css';
 @import '../../apps/email/assets/styles/email.css';
+@import '../../apps/books/assets/styles/book.css';
 
 body {
     margin: 0;

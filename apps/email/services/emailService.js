@@ -3,10 +3,10 @@ import storageService from '../../../services/storageService.js';
 import eventBus from '../../../services/eventBusService.js';
 
 export default {
-    getEmails,
     addEmail,
     query,
-    removeEmail
+    removeEmail,
+    toggleAtt
 }
 
 const KEY = 'emails';
@@ -28,16 +28,26 @@ function addEmail(email) {
     return Promise.resolve(emailToAdd);
 }
 
-function query() {
-    return Promise.resolve(gEmails);
+function query(filterBy) {
+    if (filterBy === 'all') return Promise.resolve(gEmails);
+    else if (filterBy === 'starred') return Promise.resolve(gEmails.filter(email => email.isStarred));
+    else if (filterBy === 'sent') return Promise.resolve(gEmails.filter(email => email.isSent));
 }
+
 
 function removeEmail(id) {
     const idx = _getEmailIdx(id);
     if (idx === -1) return;
     gEmails.splice(idx, 1);
     storageService.store(KEY, gEmails);
-    eventBus.emit('emails-changed', null)
+    return Promise.resolve();
+}
+
+function toggleAtt(id, att) {
+    const idx = _getEmailIdx(id);
+    if (idx === -1) return;
+    gEmails[idx][att] = !gEmails[idx][att];
+    storageService.store(KEY, gEmails);
     return Promise.resolve();
 }
 
@@ -55,14 +65,8 @@ var gEmails = [
     And you really will have to make it through that violent, metaphysical, symbolic storm. No matter how metaphysical or symbolic it might be, make no mistake about it: it will cut through flesh like a thousand razor blades. People will bleed there, and you will bleed too. Hot, red blood. You’ll catch that blood in your hands, your own blood and the blood of others.
     And once the storm is over you won’t remember how you made it through, how you managed to survive. You won’t even be sure, in fact, whether the storm is really over. But one thing is certain. When you come out of the storm you won’t be the same person who walked in. That’s what this storm’s all about.`, isRead: true, isSent: true, isStarred: true, sentAt: 1551133930594, id: utilService.makeId()
     },
-    { from: 'Kurt', subject: 'Come', body: 'As you are', isRead: true, isSent: true, isStarred: true, sentAt: 1551133930594, id: utilService.makeId() }
+    { from: 'Kurt', subject: 'Come', body: 'As you are', isRead: true, isSent: true, isStarred: true, sentAt: 1551133930594, id: utilService.makeId() },
+    { from: 'Inigo Montoya', subject: 'You killed my father', body: 'Prepare to die', isRead: true, isSent: true, isStarred: true, sentAt: 1551133930594, id: utilService.makeId() }
 ]
 
 gEmails = storageService.load(KEY) || gEmails;
-
-function getEmails(filterBy) {
-    if (filterBy === 'all') return gEmails;
-    else if (filterBy === 'starred') return gEmails.filter(email => email.isStarred);
-    else if (filterBy === 'sent') return gEmails.filter(email => email.isSent);
-
-}
