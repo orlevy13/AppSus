@@ -30,24 +30,29 @@ export default class EmailApp extends React.Component {
         this.setState({ emailsToDisplay, filterBy });
     }
 
-    // setFilter = ({ target }) => {
-    //     console.log('setting filter!target.value:', target.value)
-    //     this.setState({ filterBy: target.value });
-    //     this.setEmailsToDisplay();
-    // }
-
-    // setEmailsToDisplay = () => {
-    //     const emailsToDisplay = this.getFiltered();
-    //     console.log('emailsToDisplay', emailsToDisplay)
-    //     this.setState({ emailsToDisplay });
-    // }
-
     getFiltered = (filterBy) => {
         if (filterBy === 'read') {
             return this.state.emails.filter(email => email.isRead)
         } else if (filterBy === 'unread') {
             return this.state.emails.filter(email => !email.isRead)
         } else return this.state.emails;
+    }
+
+    onChangeSort = ({ target }) => {
+        const sortBy = target.value;
+        var emails = this.state.emailsToDisplay || this.state.emails;
+
+        if (sortBy === 'subject') {
+            emails = emails.sort((email1, email2) => {
+                return email1.subject.localeCompare(email2.subject)
+            })
+
+        } else if (sortBy === 'date') {
+            emails = emails.sort((email1, email2) => {
+                return email2.sentAt - email1.sentAt;
+            })
+        }
+        this.setState({ emailsToDisplay: emails })
     }
 
     render() {
@@ -61,8 +66,12 @@ export default class EmailApp extends React.Component {
                         <option value="read">Read</option>
                         <option value="unread">Unread</option>
                     </select>
+                    <select className="email-sort" onChange={this.onChangeSort}>
+                        <option value="">Sort</option>
+                        <option value="subject">By subject</option>
+                        <option value="date">By date</option>
+                    </select>
                     {emails && <EmailList emails={emailsToDisplay || emails} />}
-                    {/* {emails && <EmailList onChangeFilter={this.onChangeFilter} emails={emailsToDisplay || emails} />} */}
                 </div>
             </section>
         )

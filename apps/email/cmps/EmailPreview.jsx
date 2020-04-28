@@ -4,7 +4,7 @@ import eventBus from '../../../services/eventBusService.js';
 
 export default function EmailPreview({ email }) {
     return (
-        <article className={`email-preview flex align-center ${email.isRead ? 'bold' : ''}`} >
+        <article className={`email-preview flex align-center ${email.isRead ? '' : 'bold'}`} >
             <button onClick={() => {
                 emailService.removeEmail(email.id)
                     .then(() => {
