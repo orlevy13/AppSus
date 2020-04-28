@@ -131,12 +131,12 @@ function toggleIsDone(todoId, noteId) {
 
 
 var gNotes = [
-    { id: utilService.makeId(4), type: "NoteTxt", isPinned: false, txt: "Watch a Movie!" },
-    { id: utilService.makeId(4), type: "NoteTxt", isPinned: false, txt: "Set State :)" },
-    { id: utilService.makeId(4), type: "NoteImg", isPinned: true, info: { url: "https://images.pexels.com/photos/406014/pexels-photo-406014.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", title: "Woof!" }, style: { backgroundColor: "#00d" } },
+    // { id: utilService.makeId(4), type: "NoteTxt", isPinned: false, txt: "Watch a Movie!" },
+    // { id: utilService.makeId(4), type: "NoteTxt", isPinned: false, txt: "Set State :)" },
+    { id: utilService.makeId(4), type: "NoteImg", isPinned: false, info: { url: "https://images.pexels.com/photos/1762851/pexels-photo-1762851.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260", title: "Woof!" }, style: { backgroundColor: "#00d" } },
     { id: utilService.makeId(4), type: "NoteVid", isPinned: true, info: { url: "https://www.youtube.com/embed/LSFkZi8nNXo", title: "Vid" }, style: { backgroundColor: "#00d" } },
     { id: utilService.makeId(4), type: "NoteTxt", isPinned: false, txt: "Remember the good times" },
-    { id: utilService.makeId(4), type: "NoteTxt", isPinned: true, txt: "This is a looong text: Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely " },
+    { id: utilService.makeId(4), type: "NoteTxt", isPinned: true, txt: "This is a looong text: Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely " },
     { id: utilService.makeId(4), type: "NoteTxt", isPinned: true, txt: "try to delete me" },
     { id: utilService.makeId(4), type: "NoteTxt", isPinned: true, txt: "unpin me!" },
     { id: utilService.makeId(4), type: "NoteTodo", isPinned: true, info: { label: "Things for today", todos: [{ id: utilService.makeId(4), txt: "Do that", doneAt: null }, { id: utilService.makeId(4), txt: "Do this", doneAt: 187111111 }] } }

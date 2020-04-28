@@ -49,6 +49,7 @@ export default class NotesApp extends React.Component {
                 <NotesList notes={pinnedNotes} />
                 {unPinnedNotes.length !== 0 && <p className="pinned-others">OTHERS</p>}
                 <NotesList notes={unPinnedNotes} />
+                <p className="pinned-others">CoffeeRight - Or Levy - Michael Michaeli</p>
             </section>
         )
     }

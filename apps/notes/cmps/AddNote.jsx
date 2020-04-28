@@ -17,16 +17,27 @@ export default class AddNote extends React.Component {
             console.log('state', this.state)
         })
 
-        // if (value === 'NoteTodo') {
-        // this.props.onAddNote(this.state);
-        // }
-
-
     }
-
     render() {
-
         const { txt, type } = this.state;
+        let placeHolderText;
+        switch (type) {
+            case 'NoteTxt':
+                placeHolderText = 'Take a note...'
+                break;
+            case 'NoteImg':
+                placeHolderText = 'Image URL here...'
+                break;
+            case 'NoteVid':
+                placeHolderText = 'Video URL here...'
+                break;
+            case 'NoteTodo':
+                placeHolderText = 'Name your To-do list...'
+                break;
+        
+            default: placeHolderText = 'Take a note...'
+                break;
+        }
         return (
             <form>
                 <div className="note-type-icons flex justify-center">
@@ -40,8 +51,8 @@ export default class AddNote extends React.Component {
                     <label><input name="type" value="NoteTodo" type="radio" onChange={this.handleChange}  />
                         <img src="../apps/notes/assets/img/addtodo.png"  /></label>
                 </div>
-                <div>
-                    <input className="note-add-text" name="txt" value={txt} placeholder="What's on your mind..?" type="text" onChange={this.handleChange} />
+                <div className="flex align-center justify-center ">
+                    <input className="note-add-text" name="txt" value={txt} placeholder={placeHolderText} type="text" onChange={this.handleChange} />
 
                     <button className="add-note-btn" type="submit" onClick={(e) => {
                         this.props.onAddNote(this.state);

@@ -11,8 +11,34 @@ body {
 
 header {
     width: 100%;
-    height: 50px;
-    background-color: tomato;
+    height: 100px;
+    background-color: white;
+    color: #2196f3;
+    text-align: center;
+    box-shadow: 0 0 4px 0px lightgrey;
+}
+.logo-txt {
+    color: #2196f3;
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+}
+.logo-img {
+    width: 50px;
+    filter: hue-rotate(37deg);
+    position: relative;
+    top: 15px
+}
+.logo {
+    margin-left: 30px;
+    margin-top: 10px;
+}
+header p {
+    margin-top: 5px;
+    color: grey;
+    letter-spacing: 0.45em;
+    margin-left: 5px;
+    font-size: 0.7em;
 }
 
 form {
@@ -64,6 +90,7 @@ label img {
 
 .notes-page {
     width: 100%;
+    margin-bottom: 50px;
 }
 
 /* Notes app */
@@ -74,33 +101,72 @@ label img {
 
 .pinned-others {
     margin: 20px 10px 0;
-    color: lightgrey;
+    color: rgb(180, 180, 180);
 }
 
-.notes-section {
-    columns: auto;
+.notes-section:last-of-type {
+    margin-bottom: 200px;
 }
 
 .note-preview {
     background-color: #fff;
     margin: 8px;
     padding: 15px;
+    padding-bottom: 5px;
     width: 300px;
-    border: 1px solid lightgrey;
+    /* border: 1px solid lightgrey; */
     border-radius: 10px;
     /* word-break: break-all; */
     white-space: normal;
+    box-shadow: 0 0 4px 0px lightgrey;
+    position: relative;
 }
-.note-preview img {
-    width: 100%;
+
+.note-preview button {
+    background-color: transparent;
+    margin: 5px;
 }
 
 .todo-done {
     text-decoration: line-through;
 }
 
+.add-todo-input {
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 4px 0px lightgrey;
+    padding: 5px;
+    margin: 8px;
+}
+
+.pin-btn {
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    margin: 0;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.404);
+    padding: 8px;
+}
+.pinned-img {
+    filter: grayscale(100%);
+}
+.unpinned-img , .pinned-img , .trash , .add-todo-img {
+    width: 20px;
+}
+
+.note-img-preview  {
+    width: 100%;
+}
+
+
 /* ************************/
 
 .long-txt {
     cursor: pointer;
+}
+
+.margin {
+    margin: 15px;
 }

@@ -7,6 +7,6 @@ export default function NotePinBtn(props) {
         <button onClick={() => {
             noteService.deleteNote(props.note.id);
             eventBus.emit('deletePin', {noteId: props.note.id})
-        }} >Delete</button>
+        }} ><img className="trash" src="../apps/notes/assets/img/trash.png" /></button>
     )
 }

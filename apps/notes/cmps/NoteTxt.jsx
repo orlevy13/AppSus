@@ -5,9 +5,8 @@ import LongTxt from '../../../cmps/LongTxt.jsx';
 export default function NoteTxt(props) {
 	return (
 		<article className="note-preview ">
-            {/* <p>{props.note.txt}</p> */}
-            <LongTxt txt={props.note.txt} length={25} />
 			<NotePinBtn note={props.note} />
+            <div className="margin" ><LongTxt txt={props.note.txt} length={200} /></div>
 			<NoteDelete note={props.note} />
 		</article>
 	);
