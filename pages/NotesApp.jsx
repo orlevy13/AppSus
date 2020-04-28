@@ -13,6 +13,7 @@ export default class NotesApp extends React.Component {
     componentDidMount() {
         this.loadNotes();
         eventBus.on('togglePin', (isPinned) => this.loadNotes());
+        eventBus.on('deletePin', (noteId) => this.loadNotes());
     }
 
     // function loadNotes() - will get notes from service with filterBy + update state
@@ -26,10 +27,8 @@ export default class NotesApp extends React.Component {
 
     // function onAddNote(note) - request to add note in service, reuse of the function loadNotes()
     onAddNote = (note) => {
-        console.log('noteService.addNote(note)', noteService.addNote(note))
         noteService.addNote(note)
             .then((note) => this.loadNotes());
-
     }
 
     // render - sent notes from state to notelist + function onAddNote
@@ -46,9 +45,9 @@ export default class NotesApp extends React.Component {
         return (
             <section className="notes-page flex column justify-center">
                 <AddNote onAddNote={onAddNote} />
-                <h1>Pinned</h1>
+                {pinnedNotes.length !== 0 && <p>Pinned</p>}
                 <NotesList notes={pinnedNotes} />
-                <h1>UnPinned</h1>
+                {unPinnedNotes.length !== 0 && <p>Others</p>}
                 <NotesList notes={unPinnedNotes} />
             </section>
         )
