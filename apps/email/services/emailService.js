@@ -48,7 +48,7 @@ function toggleAtt(id, att) {
     if (idx === -1) return;
     gEmails[idx][att] = !gEmails[idx][att];
     storageService.store(KEY, gEmails);
-    return Promise.resolve();
+    return Promise.resolve(gEmails[idx][att]);
 }
 
 function _getEmailIdx(id) {
