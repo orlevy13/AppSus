@@ -3,30 +3,40 @@ import LongTxt from '../../../cmps/LongTxt.jsx';
 import eventBus from '../../../services/eventBusService.js';
 
 export default function EmailPreview({ email }) {
+    var starImgSrc = email.isStarred ? "../apps/email/assets/imgs/starred.png" :
+        "../apps/email/assets/imgs/star.png";
+
+    var envelopeImgSrc = email.isRead ? "../apps/email/assets/imgs/open-mail.png" :
+        "../apps/email/assets/imgs/close-mail.png"
+
+    var deleteImgSrc = "../apps/email/assets/imgs/bin.png";
+
     return (
         <article className={`email-preview flex align-center ${email.isRead ? '' : 'bold'}`} >
-            <button onClick={() => {
+            <button title="Delete" onClick={() => {
                 emailService.removeEmail(email.id)
                     .then(() => {
                         eventBus.emit('emails-changed', null)
                     });
-            }} className="del-btn">🗑️</button>
+            }} className="del-btn"><img height="15" src={deleteImgSrc} /></button>
 
-            <button onClick={() => {
+            <button title="Star" onClick={() => {
                 emailService.toggleAtt(email.id, 'isStarred')
-                    .then(() => {
+                    .then((isStarred) => {
                         console.log('star toggled!')
                         eventBus.emit('emails-changed', null)
                     });
-            }} className="star-btn">⭐</button>
+            }} className="star-btn">
+                <img height="15" src={starImgSrc} />
+            </button>
 
-            <button onClick={() => {
+            <button title="Read/Unread" onClick={() => {
                 emailService.toggleAtt(email.id, 'isRead')
                     .then(() => {
                         console.log('Read toggled!')
                         eventBus.emit('emails-changed', null)
                     });
-            }} className="toggle-read-btn">✉️</button>
+            }} className="toggle-read-btn"><img height="15" src={envelopeImgSrc} /></button>
 
             <p className="email-from">{email.from}</p>
             <p className="email-subj">{email.subject}</p>

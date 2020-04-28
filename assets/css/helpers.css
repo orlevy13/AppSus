@@ -50,6 +50,10 @@
     flex-grow: 1;
 }
 
+.flex.align-baseline {
+    align-items: baseline;
+}
+
 /* List helpers */
 
 .clean-list {
