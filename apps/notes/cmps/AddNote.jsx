@@ -1,10 +1,12 @@
-import NoteTxt from './NoteTxt.jsx';
-
 export default class AddNote extends React.Component {
 
     state = {
         txt: '',
         type: ''
+    }
+
+    componentDidMount() {
+        this.setState({type:'NoteTxt'})
     }
 
     handleChange = ({ target }) => {
@@ -20,20 +22,20 @@ export default class AddNote extends React.Component {
 
         const { txt } = this.state;
         return (
-            <form onChange={this.handleChange}>
-                <input name="txt" value={txt} placeholder="What's on your mind..?" type="text" />
+            <form>
+                <input name="txt" value={txt} placeholder="What's on your mind..?" type="text" onChange={this.handleChange} />
                 <label>text</label>
-                <input name="type" value="NoteTxt" type="radio" />
+                <input name="type" value="NoteTxt" type="radio" onChange={this.handleChange} checked />
                 <label>image</label>
-                <input name="type" value="NoteImg" type="radio" />
+                <input name="type" value="NoteImg" type="radio" onChange={this.handleChange} />
                 <label>video</label>
-                <input name="type" value="NoteVid" type="radio" />
+                <input name="type" value="NoteVid" type="radio" onChange={this.handleChange} />
                 <label>todo</label>
-                <input name="type" value="NoteTodo" type="radio" />
-                <button onClick={() => {
+                <input name="type" value="NoteTodo" type="radio" onChange={this.handleChange} />
+                <button onClick={(e) => {
                     this.props.onAddNote(this.state);
                     console.log('clicked add!');
-
+                    e.preventDefault();
                 }} >Add</button>
             </form >
         )

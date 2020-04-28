@@ -31,11 +31,15 @@ header {
     width: 100%;
 }
 
-.notes-preview {
+.note-preview {
     background-color: #fff;
     margin: 20px;
     padding: 20px;
     width: 200px;
     border: 1px solid lightgrey;
     border-radius: 10px;
+}
+
+.read-more {
+    cursor: pointer;
 }

@@ -1,20 +1,20 @@
 import storageService from '../../../services/storageService.js';
 import utilService from '../../../services/utilService.js';
 
-export default { addNote, getUnPinnedNotes, getPinnedNotes, togglePinNote, query }
+export default { addNote, getUnPinnedNotes, getPinnedNotes, togglePinNote, query , deleteNote }
 
 const KEY = 'notes';
 
+function query(filterBy) {
+    if (!filterBy) return Promise.resolve(gNotes);
+    if (filterBy) console.log('THERE\'S A FILTER BUT THE FUNCTION DOESN\'T ACTUALLY FILTER!!')
+}
 function togglePinNote(noteId) {
     const note = gNotes.find(note => note.id === noteId)
     note.isPinned = !note.isPinned
     storageService.store(KEY, gNotes)
 }
 
-function query(filterBy) {
-    if (!filterBy) return Promise.resolve(gNotes);
-    if (filterBy) console.log('THERE\'S A FILTER BUT THE FUNCTION DOESN\'T ACTUALLY FILTER!!')
-}
 
 function getUnPinnedNotes(notes) {
     return notes.filter(note => !note.isPinned);
@@ -31,8 +31,9 @@ function getPinnedNotes(notes) {
 // }
 
 function deleteNote(noteId) {
-    console.log('delete');
-
+    const noteToDeleteIdx = gNotes.findIndex(note => note.id === noteId)
+    gNotes.splice(noteToDeleteIdx, 1)
+    storageService.store(KEY, gNotes);
 }
 
 function addNote(note) {
@@ -82,7 +83,7 @@ function addNoteImg(note) {
 }
 
 var gNotes = [
-    { id: utilService.makeId(4), type: "NoteTxt", isPinned: false, txt: "Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie! Watch a Movie!" },
+    { id: utilService.makeId(4), type: "NoteTxt", isPinned: false, txt: "Watch a Movie!" },
     { id: utilService.makeId(4), type: "NoteTxt", isPinned: false, txt: "Set State :)" },
     { id: utilService.makeId(4), type: "NoteTxt", isPinned: false, txt: "Remember the good times" },
     { id: utilService.makeId(4), type: "NoteTxt", isPinned: true, txt: "Codding is lovely" },

@@ -5,8 +5,8 @@ import eventBus from '../../../services/eventBusService.js'
 export default function NotePinBtn(props) {
     return (
         <button onClick={() => {
-            noteService.togglePinNote(props.note.id);
-            eventBus.emit('togglePin', {isPinned:false})
-        }} >{props.note.isPinned && 'UnPin'}{!props.note.isPinned && 'Pin'}</button>
+            noteService.deleteNote(props.note.id);
+            eventBus.emit('deletePin', {noteId: props.note.id})
+        }} >Delete</button>
     )
 }
