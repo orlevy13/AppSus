@@ -7,7 +7,7 @@ export default function Drafts() {
         <section className="drafts-page flex">
             <SideBar></SideBar>
             <div className="email-list">
-                <EmailList emails={emailService.getEmails('drafts')}></EmailList>
+                {/* <EmailList emails={emailService.getEmails('drafts')}></EmailList> */}
             </div>
         </section>
     )
