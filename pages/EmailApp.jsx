@@ -1,6 +1,7 @@
 import SideBar from '../apps/email/cmps/SideBar.jsx';
 import EmailList from '../apps/email/cmps/EmailList.jsx';
 import emailService from '../apps/email/services/emailService.js';
+import eventBus from '../services/eventBusService.js';
 
 export default class EmailApp extends React.Component {
 
@@ -10,6 +11,7 @@ export default class EmailApp extends React.Component {
 
     componentDidMount() {
         this.loadEmails();
+        eventBus.on('emails-changed', () => this.loadEmails());
     }
 
     loadEmails = () => {

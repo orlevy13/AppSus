@@ -1,5 +1,3 @@
-import noteService from '../services/noteService.js';
-import eventBus from '../../../services/eventBusService.js'
 import NotePinBtn from '../cmps/NotePinBtn.jsx'
 
 

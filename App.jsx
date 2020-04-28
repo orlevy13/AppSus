@@ -26,7 +26,7 @@ export class App extends React.Component {
                 <UserMsg />
                 <main>
                     <Switch>
-                        <Route exact component={Compose} path="/compose" />
+                        <Route history={history} exact component={Compose} path="/compose" />
                         <Route exact component={Sent} path="/sent" />
                         <Route exact component={Starred} path="/starred" />
                         <Route exact component={Drafts} path="/drafts" />
