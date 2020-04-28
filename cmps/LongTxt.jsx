@@ -21,7 +21,7 @@ export default class LongTxt extends React.Component {
 
         if (txt.length > length) {
             return (
-                <div onClick={this.toggleShown}>
+                <div onClick={this.toggleShown} className='long-txt'>
                     <p>{isLongTxtShown ? txt : shortTxt}</p>
                 </div>
             )

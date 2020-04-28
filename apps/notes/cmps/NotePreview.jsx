@@ -1,4 +1,7 @@
 import NoteTxt from './NoteTxt.jsx';
+import NoteImg from './NoteImg.jsx';
+import NoteVid from './NoteVid.jsx';
+import NoteTodo from './NoteTodo.jsx';
 
 
 export default function NotePreview(props) {

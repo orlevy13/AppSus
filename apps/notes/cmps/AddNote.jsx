@@ -16,23 +16,36 @@ export default class AddNote extends React.Component {
         this.setState(prevState => ({ ...prevState, [field]: value }), () => {
             console.log('state', this.state)
         })
+
+        // if (value === 'NoteTodo') {
+            // this.props.onAddNote(this.state);
+        // }
+
+
     }
 
     render() {
 
-        const { txt } = this.state;
+        const { txt, type } = this.state;
         return (
             <form>
                 <input name="txt" value={txt} placeholder="What's on your mind..?" type="text" onChange={this.handleChange} />
-                <label>text</label>
-                <input name="type" value="NoteTxt" type="radio" onChange={this.handleChange} checked />
-                <label>image</label>
-                <input name="type" value="NoteImg" type="radio" onChange={this.handleChange} />
-                <label>video</label>
-                <input name="type" value="NoteVid" type="radio" onChange={this.handleChange} />
-                <label>todo</label>
-                <input name="type" value="NoteTodo" type="radio" onChange={this.handleChange} />
-                <button onClick={(e) => {
+                <label ><input name="type" value="NoteTxt" type="radio" onChange={this.handleChange} hidden />
+                <img src="../apps/notes/assets/img/addtext.png" width="30"/></label>
+                <label><input name="type" value="NoteImg" type="radio" onChange={this.handleChange} hidden />
+                <img src="../apps/notes/assets/img/addimg.png" width="30"/></label>
+                <label><input name="type" value="NoteVid" type="radio" onChange={this.handleChange} hidden />
+                    <img src="../apps/notes/assets/img/addvid.png" width="30" /></label>
+                
+
+                {/* <img name onClick={() => { }} src="../apps/notes/assets/img/addtodo.png" width="30" /> */}
+                
+
+                <label><input name="type" value="NoteTodo" type="radio" onChange={this.handleChange} hidden />
+                    <img src="../apps/notes/assets/img/addtodo.png" width="30" /></label>
+                
+
+                <button type="submit" onClick={(e) => {
                     this.props.onAddNote(this.state);
                     console.log('clicked add!');
                     e.preventDefault();

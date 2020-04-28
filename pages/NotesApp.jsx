@@ -43,7 +43,7 @@ export default class NotesApp extends React.Component {
         const unPinnedNotes = noteService.getUnPinnedNotes(notes);
 
         return (
-            <section className="notes-page flex column justify-center">
+            <section className="notes-page flex column justify-center align-center">
                 <AddNote onAddNote={onAddNote} />
                 {pinnedNotes.length !== 0 && <p>Pinned</p>}
                 <NotesList notes={pinnedNotes} />
