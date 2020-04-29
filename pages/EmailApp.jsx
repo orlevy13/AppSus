@@ -7,13 +7,19 @@ export default class EmailApp extends React.Component {
 
     state = {
         emails: null,
-        emailsToDisplay: null,
-        filterBy: ''
+        filteredEmails: null,
+        filterBy: '',
+        searchFor: ''
     }
 
     componentDidMount() {
         this.loadEmails();
         eventBus.on('emails-changed', () => this.loadEmails());
+        eventBus.emit('set-page', { app: 'email' });
+
+        eventBus.on('search-email', (data) => {
+            this.setState({ searchFor: data.filter })
+        })
     }
 
     loadEmails = () => {
@@ -26,8 +32,8 @@ export default class EmailApp extends React.Component {
 
     onChangeFilter = ({ target }) => {
         const filterBy = target.value;
-        const emailsToDisplay = this.getFiltered(filterBy);
-        this.setState({ emailsToDisplay, filterBy });
+        const filteredEmails = this.getFiltered(filterBy);
+        this.setState({ filteredEmails, filterBy });
     }
 
     getFiltered = (filterBy) => {
@@ -37,26 +43,37 @@ export default class EmailApp extends React.Component {
             return this.state.emails.filter(email => !email.isRead)
         } else return this.state.emails;
     }
-
+    
     onChangeSort = ({ target }) => {
+        const { filteredEmails, emails } = this.state;
         const sortBy = target.value;
-        var emails = this.state.emailsToDisplay || this.state.emails;
+        var sortedEmails = filteredEmails || emails;
 
         if (sortBy === 'subject') {
-            emails = emails.sort((email1, email2) => {
+            sortedEmails = sortedEmails.sort((email1, email2) => {
                 return email1.subject.localeCompare(email2.subject)
             })
 
         } else if (sortBy === 'date') {
-            emails = emails.sort((email1, email2) => {
+            sortedEmails = sortedEmails.sort((email1, email2) => {
                 return email2.sentAt - email1.sentAt;
             })
         }
-        this.setState({ emailsToDisplay: emails })
+        this.setState({ filteredEmails: sortedEmails })
     }
 
     render() {
-        const { emails, emailsToDisplay } = this.state;
+        const { emails, filteredEmails, searchFor } = this.state;
+        var emailsToDisplay;
+
+        if (!searchFor) emailsToDisplay = filteredEmails || emails;
+        else {
+            emailsToDisplay = (filteredEmails || emails).filter(email => {
+                return email.subject.toLowerCase().includes(searchFor.toLowerCase()) ||
+                    email.body.toLowerCase().includes(searchFor.toLowerCase())
+            })
+        }
+
         return (
             <section className="inbox-page flex">
                 <SideBar />
@@ -71,7 +88,7 @@ export default class EmailApp extends React.Component {
                         <option value="subject">By subject</option>
                         <option value="date">By date</option>
                     </select>
-                    {emails && <EmailList emails={emailsToDisplay || emails} />}
+                    {emails && <EmailList emails={emailsToDisplay} />}
                 </div>
             </section>
         )

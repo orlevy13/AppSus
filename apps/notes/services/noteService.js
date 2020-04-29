@@ -18,7 +18,14 @@ const KEY = 'notes';
 
 function query(filterBy) {
     if (!filterBy) return Promise.resolve(gNotes);
-    if (filterBy) console.log('THERE\'S A FILTER BUT THE FUNCTION DOESN\'T ACTUALLY FILTER!!')
+    const notes = gNotes.filter(note => {
+        let searchPrm;
+        if (note.type === 'NoteTxt') searchPrm = note.txt;
+        if (note.type === 'NoteImg' || note.type === 'NoteVid') searchPrm = note.info.title;
+        if (note.type === 'NoteTodo') searchPrm = note.info.label;
+        return searchPrm.toLowerCase().includes(filterBy.toLowerCase());
+    })
+    return Promise.resolve(notes);
 }
 
 function onChangeBgColor({noteId, backgroundColor}) {
@@ -64,8 +71,6 @@ function addNote(note) {
         case 'NoteTodo':
             return Promise.resolve(addNoteTodo(note));
         default:
-            console.log('got to default');
-
             return Promise.resolve(addNoteTxt(note));
     }
 }
@@ -163,7 +168,7 @@ var gNotes = [
         id: utilService.makeId(4),
         type: "NoteImg",
         isPinned: false,
-        info: { url: "https://images.pexels.com/photos/1762851/pexels-photo-1762851.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260", title: "Woof!" },
+        info: { url: "https://images.unsplash.com/photo-1588056725282-ac9b8a638036?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80", title: "Woof!" },
         style: { backgroundColor: "white" }
     },
     {

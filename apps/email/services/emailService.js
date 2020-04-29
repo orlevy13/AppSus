@@ -6,7 +6,8 @@ export default {
     query,
     removeEmail,
     toggleAtt,
-    getUnreadCount
+    getUnreadCount,
+    getById
 }
 
 const KEY = 'emails';
@@ -34,6 +35,11 @@ function query(filterBy) {
     else if (filterBy === 'sent') return Promise.resolve(gEmails.filter(email => email.isSent));
 }
 
+function getById(id) {
+    
+    const email = gEmails.find(email => email.id === id);
+    return Promise.resolve(email);
+}
 
 function removeEmail(id) {
     const idx = _getEmailIdx(id);
@@ -48,7 +54,7 @@ function toggleAtt(id, att) {
     if (idx === -1) return;
     gEmails[idx][att] = !gEmails[idx][att];
     storageService.store(KEY, gEmails);
-    return Promise.resolve(gEmails[idx][att]);
+    return Promise.resolve();
 }
 
 function _getEmailIdx(id) {

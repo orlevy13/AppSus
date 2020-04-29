@@ -53,9 +53,10 @@
 }
 
 .notes-section {
-    columns: auto 300px;
+    columns: 3 300px;
     column-fill: auto;
-    /* word-break: keep-all; */
+    width: 80vw;
+    margin: 0 auto
 }
 
 .notes-section:last-of-type {
@@ -96,6 +97,7 @@
     margin: 8px;
 }
 
+
 .pin-btn {
     position: absolute;
     right: 3px;
@@ -108,8 +110,8 @@
 .pinned-img {
     filter: grayscale(100%);
 }
-.unpinned-img , .pinned-img , .trash , .add-todo-img , .bgcolor {
-    width: 20px;
+.unpinned-img , .pinned-img , .trash , .add-todo-img , .bgcolor , .delete-todo-img {
+    height: 20px;
 }
 
 .note-img-preview  {

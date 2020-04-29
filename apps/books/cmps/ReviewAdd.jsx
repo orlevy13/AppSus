@@ -17,8 +17,6 @@ export default class ReviewAdd extends React.Component {
 
         const field = target.name
         const value = (target.type === 'number') ? +target.value : target.value
-        console.log('field', field);
-        console.log('value', value);
         this.setState(prevState => {
             return {
                 review: {

@@ -32,6 +32,10 @@ export default class NoteTodo extends React.Component {
 			.then((todo) => this.loadTodos());
 	}
 
+	deleteTodo = (todoId, noteId) => {
+	
+	}
+
 	render() {
 		const { txt } = this.state;
 		if (!this.props.note.info) return <p>'Loading...'</p>
@@ -39,11 +43,25 @@ export default class NoteTodo extends React.Component {
 			<article className="note-preview "  style={this.props.note.style} >
 				<NotePinBtn note={this.props.note} />
 				<h4>{this.props.note.info.label}:</h4>
-				<div className="margin" >
-				{this.props.note.info.todos.map((todo) => <p className={(todo.isDone)?'todo-done':''} key={todo.id} onClick={()=>{this.toggleIsDone(todo.id , this.props.note.id)}}>{todo.txt}</p>)}
-				</div>
+				<ul className="margin clean-list" >
+					{this.props.note.info.todos.map((todo) => {
+						return 	<li className={(todo.isDone) ? 'todo-done' : ''}
+							key={todo.id}
+							onClick={() => {
+								this.toggleIsDone(todo.id, this.props.note.id)
+							}}>
+							{todo.txt}<button onClick={(e) => {
+								e.preventDefault()
+								this.deleteTodo(todo.id, this.props.note.id)
+							}}>
+								<img className="delete-todo-img"
+									src="./apps/notes/assets/img/delete.png" />
+							</button>
+						</li>
+					})}
+				</ul>
 					<div className="flex align-center justify-center"><input className="add-todo-input" type="text" name="addTodo" value={txt} onChange={this.handleChange} />
-					<button onClick={()=>{this.onAddTodo(txt,this.props.note.id)}}><img className="add-todo-img" src="../apps/notes/assets/img/plus.png"/></button>
+					<button onClick={()=>{this.onAddTodo(txt,this.props.note.id)}}><img className="add-todo-img" src="./apps/notes/assets/img/plus.png"/></button>
 					<NoteDelete note={this.props.note} />
 					<NoteBackground noteId={this.props.note.id} />
 				</div>

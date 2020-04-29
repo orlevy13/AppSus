@@ -9,8 +9,8 @@ export default class AppHeader extends React.Component {
             <header className="flex space-between">
                 <NavLink exact to='/'>
                 <div className="logo">
-                    <img className="logo-img" src="../assets/img/logo.png" />
-                    <a className="logo-txt">Appsus</a>
+                    <img className="logo-img" src="./assets/img/logo.png" />
+                    <span className="logo-txt">Appsus</span>
                     <p>First React project</p>
                 </div></NavLink>
                 <SearchBar></SearchBar>

@@ -10,7 +10,6 @@ export default class BookDetails extends React.Component {
 
 
     handleChange = ({ target }) => {
-        console.log(target);
         const field = target.name
         const value = (target.type === 'number') ? parseInt(target.value) : target.value
 
