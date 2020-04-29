@@ -30,7 +30,6 @@ function query(filterBy) {
 }
 
 function onChangeBgColor({noteId, backgroundColor}) {
-    console.log("noteId, backgroundColor",noteId, backgroundColor);
     
     const noteIdx = getIndexById(noteId)
     gNotes[noteIdx].style = { ...gNotes[noteIdx].style, backgroundColor }
@@ -149,11 +148,7 @@ function addTodo(txt, noteId) {
 
 function toggleIsDone(todoId, noteId) {
     const note = gNotes[getIndexById(noteId)]
-    console.log('note',note);
-    
     const todoIndex = note.info.todos.findIndex(todo => todo.id === todoId)
-    console.log('todoIndex', todoIndex);
-    
     const todo = note.info.todos[todoIndex]
     todo.isDone = !todo.isDone
     if (!todo.isDone) todo.doneAt = Date.now();
@@ -169,8 +164,6 @@ function deleteTodo(todoId, noteId) {
 }
 
 var gNotes = [
-    // { id: utilService.makeId(4), type: "NoteTxt", isPinned: false, txt: "Watch a Movie!" },
-    // { id: utilService.makeId(4), type: "NoteTxt", isPinned: false, txt: "Set State :)" },
     {
         id: utilService.makeId(4),
         type: "NoteImg",

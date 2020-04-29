@@ -55,7 +55,6 @@ export default class AddNote extends React.Component {
                     <button className="add-note-btn" type="submit" onClick={(e) => {
                         this.props.onAddNote(this.state);
                         this.setState({txt: ''})
-                        console.log('clicked add!');
                         e.preventDefault();
                     }} ><img src="./apps/notes/assets/img/plus.png" /></button>
                 </div>

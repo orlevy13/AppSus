@@ -36,15 +36,6 @@ export default class EmailDetails extends React.Component {
                             <p>From: {from}</p>
                             <div>
                                 <p> {new Date(sentAt).toLocaleDateString("en-US")}</p>
-                                {/* <button title="Star" onClick={() => {
-                                emailService.toggleAtt(email.id, 'isStarred')
-                                    .then(() => {
-                                        console.log('star toggled!')
-                                        eventBus.emit('emails-changed', null)
-                                    });
-                            }} className="star-btn">
-                                <img height="15" src={starImgSrc} />
-                            </button> */}
                             </div>
                         </div>
                     </div>

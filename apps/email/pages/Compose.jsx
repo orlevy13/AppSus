@@ -21,7 +21,6 @@ export default class Compose extends React.Component {
         if (!email.to) return;
         emailService.addEmail(email)
             .then(() => {
-                console.log('SUCCESS!')
                 this.props.history.push("/email");
             })
     }
