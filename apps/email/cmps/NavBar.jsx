@@ -15,7 +15,6 @@ export default function NavBar() {
                 <NavLink exact to='/sent'>
                     <li className="flex"><img className="sidebar-icon" height="18" src="./apps/email/assets/imgs/sent.png" /> Sent</li>
                 </NavLink>
-                <NavLink exact to='/drafts'><li>📝 Drafts</li></NavLink>
             </ul>
         </nav>
     )

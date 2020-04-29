@@ -15,7 +15,6 @@ import NotesApp from './pages/NotesApp.jsx';
 import EmailApp from './pages/EmailApp.jsx';
 import Sent from './apps/email/pages/Sent.jsx';
 import Starred from './apps/email/pages/Starred.jsx';
-import Drafts from './apps/email/pages/Drafts.jsx';
 import Compose from './apps/email/pages/Compose.jsx';
 import EmailDetails from './apps/email/pages/EmailDetails.jsx';
 
@@ -31,7 +30,6 @@ export class App extends React.Component {
                         <Route history={history} exact component={Compose} path="/compose" />
                         <Route exact component={Sent} path="/sent" />
                         <Route exact component={Starred} path="/starred" />
-                        <Route exact component={Drafts} path="/drafts" />
                         <Route exact component={EmailApp} path="/email" />
                         <Route exact component={NotesApp} path="/notes" />
                         <Route exact component={BookAdd} path="/addBook" />
