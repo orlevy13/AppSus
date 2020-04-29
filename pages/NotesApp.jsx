@@ -12,12 +12,22 @@ export default class NotesApp extends React.Component {
     // didMount- loadNotes()
     componentDidMount() {
         this.loadNotes();
+
         eventBus.on('togglePin', (isPinned) => this.loadNotes());
         eventBus.on('deletePin', (noteId) => this.loadNotes());
+        eventBus.emit('set-page', { app: 'notes' });
+
+        eventBus.on('search-note', (data) => {
+            this.setState({ filterBy: data.filter }, () => {
+                this.loadNotes();
+            })
+        })
     }
 
     // function loadNotes() - will get notes from service with filterBy + update state
     loadNotes = () => {
+        console.log(this.state.filterBy, 'filterby in state');
+
         noteService.query(this.state.filterBy)
             .then((notes) => this.setState({ notes }))
             .catch((err) => {

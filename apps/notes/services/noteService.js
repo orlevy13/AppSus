@@ -7,7 +7,14 @@ const KEY = 'notes';
 
 function query(filterBy) {
     if (!filterBy) return Promise.resolve(gNotes);
-    if (filterBy) console.log('THERE\'S A FILTER BUT THE FUNCTION DOESN\'T ACTUALLY FILTER!!')
+    const notes = gNotes.filter(note => {
+        let searchPrm;
+        if (note.type === 'NoteTxt') searchPrm = note.txt;
+        if (note.type === 'NoteImg' || note.type === 'NoteVid') searchPrm = note.info.title;
+        if (note.type === 'NoteTodo') searchPrm = note.info.label;
+        return searchPrm.toLowerCase().includes(filterBy.toLowerCase());
+    })
+    return Promise.resolve(notes);
 }
 
 function togglePinNote(noteId) {

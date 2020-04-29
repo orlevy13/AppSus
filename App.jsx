@@ -17,6 +17,7 @@ import Sent from './apps/email/pages/Sent.jsx';
 import Starred from './apps/email/pages/Starred.jsx';
 import Drafts from './apps/email/pages/Drafts.jsx';
 import Compose from './apps/email/pages/Compose.jsx';
+import EmailDetails from './apps/email/pages/EmailDetails.jsx';
 
 export class App extends React.Component {
     render() {
@@ -26,6 +27,7 @@ export class App extends React.Component {
                 <UserMsg />
                 <main>
                     <Switch>
+                        <Route exact component={EmailDetails} path="/email/details" />
                         <Route history={history} exact component={Compose} path="/compose" />
                         <Route exact component={Sent} path="/sent" />
                         <Route exact component={Starred} path="/starred" />

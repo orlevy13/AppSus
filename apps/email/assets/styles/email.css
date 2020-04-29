@@ -132,10 +132,27 @@ body {
 }
 
 .email-subj {
-    margin-right: 30px;
-    min-width: 300px;
+    min-width: max-content;
+    margin-right: 3px;
+}
+
+.email-body {
+    color: #a3a3a3;
 }
 
 .bold {
     font-weight: bolder;
+}
+
+/* Email details */
+
+.email-details {
+    margin-left: 200px;
+    padding: 30px 15px 0;
+    background-color: #ffffff;
+    height: 100vh;
+}
+
+.email-header {
+    margin-bottom: 30px;
 }
