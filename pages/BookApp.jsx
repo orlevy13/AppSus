@@ -14,6 +14,7 @@ export default class BookApp extends React.Component {
 
     componentDidMount() {
         this.loadBooks();
+        eventBus.emit('set-page', { app: 'book' });
     }
     loadBooks() {
         BookService.query(this.state.filterBy)

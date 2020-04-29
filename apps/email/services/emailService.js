@@ -7,7 +7,8 @@ export default {
     removeEmail,
     toggleAtt,
     getUnreadCount,
-    getById
+    getById,
+    markAsRead
 }
 
 const KEY = 'emails';
@@ -36,7 +37,7 @@ function query(filterBy) {
 }
 
 function getById(id) {
-    
+
     const email = gEmails.find(email => email.id === id);
     return Promise.resolve(email);
 }
@@ -57,6 +58,15 @@ function toggleAtt(id, att) {
     return Promise.resolve();
 }
 
+function markAsRead(id) {
+    const idx = _getEmailIdx(id);
+    if (idx === -1) return;
+    gEmails[idx].isRead = true;
+    storageService.store(KEY, gEmails);
+    return Promise.resolve();
+}
+
+
 function _getEmailIdx(id) {
     return gEmails.findIndex(email => email.id === id);
 }
@@ -73,7 +83,23 @@ function getUnreadCount() {
 var gEmails = [
     { from: 'John', subject: 'Wassap?', body: 'Pick up! im not read yet', isRead: false, isSent: false, isStarred: false, sentAt: 155118230594, id: utilService.makeId() },
     { from: 'Seneca', subject: 'True happiness', body: `True happiness is to enjoy the present, without anxious dependence upon the future, not to amuse ourselves with either hopes or fears but to rest satisfied with what we have, which is sufficient, for he that is so wants nothing. The greatest blessings of mankind are within us and within our reach. A wise man is content with his lot, whatever it may be, without wishing for what he has not`, isRead: false, isSent: false, isStarred: false, sentAt: 1551133930594, id: utilService.makeId() },
-    { from: 'Anonymus', subject: 'third email here! STARRED!! and sent!', body: 'Pick up!,im read!', isRead: true, isSent: true, isStarred: true, sentAt: 1551133123456, id: utilService.makeId() },
+    {
+        from: 'Lubo', subject: 'Your free trial ends today', body: `
+    Hello,
+    
+    Today is the last day of your free trial. Time flies, right?
+    
+    If you don't purchase a subscription, you and your team will lose access to Avocode.
+    
+    Get Avocode subscription.
+    
+    If you still have any questions about our app, plans, features, or billing, reply to this email, and I will be happy to help.
+    
+    Cheers,
+    
+    Lubomir Kracun
+    Customer Success Manager, Avocode`, isRead: true, isSent: true, isStarred: true, sentAt: 1551133123456, id: utilService.makeId()
+    },
     { from: 'Douglas Adams', subject: 'the answer to life, the universe and everything', body: '42', isRead: true, isSent: true, isStarred: true, sentAt: 1551133930594, id: utilService.makeId() },
     { from: 'A.Einstein', subject: `Two things are infinite:`, body: `the universe and human stupidity. and I'm not sure about the universe.`, isRead: true, isSent: true, isStarred: true, sentAt: 1551133930544, id: utilService.makeId() },
     {
@@ -82,7 +108,23 @@ var gEmails = [
     And once the storm is over you won’t remember how you made it through, how you managed to survive. You won’t even be sure, in fact, whether the storm is really over. But one thing is certain. When you come out of the storm you won’t be the same person who walked in. That’s what this storm’s all about.`, isRead: true, isSent: true, isStarred: true, sentAt: 1551133930598, id: utilService.makeId()
     },
     { from: 'Kurt', subject: 'Come', body: 'As you are', isRead: true, isSent: true, isStarred: true, sentAt: 1551133930594, id: utilService.makeId() },
-    { from: 'Inigo Montoya', subject: 'You killed my father', body: 'Prepare to die', isRead: true, isSent: true, isStarred: true, sentAt: 1551133930594, id: utilService.makeId() }
+    { from: 'Pink', subject: 'Keep in mind', body: `Every year is getting shorter, never seem to find the time. Plans that either come to naught or half a page of scribbled lines. Hanging on in quiet desperation is the English way. The time is gone, the song is over, thought I'd something more to say.`, isRead: false, isSent: true, isStarred: true, sentAt: 1551133930596, id: utilService.makeId() },
+    {
+        from: 'Pink', subject: 'Shine on', body: `Remember when you were young, you shone like the sun.
+    Shine on you crazy diamond.
+    Now there’s a look in your eyes, like black holes in the sky.
+    Shine on you crazy diamond.
+    You were caught on the crossfire of childhood and stardom,
+    Blown on the steel breeze.
+    Come on you target for faraway laughter,
+    Come on you stranger, you legend, you martyr, and shine!
+    You reached for the secret too soon, you cried for the moon.`, isRead: false, isSent: true, isStarred: false, sentAt: 1551133930599, id: utilService.makeId()
+    },
+    { from: 'Inigo Montoya', subject: 'You killed my father', body: 'Prepare to die', isRead: true, isSent: true, isStarred: true, sentAt: 1551133930597, id: utilService.makeId() },
+    {
+        from: 'eBay', subject: 'ORDER UPDATE', body: `
+    Hi, your order is being shipped!`, isRead: false, isSent: true, isStarred: true, sentAt: 1551133930601, id: utilService.makeId()
+    }
 ]
 
 gEmails = storageService.load(KEY) || gEmails;

@@ -25,13 +25,13 @@ export default class SearchBar extends React.Component {
     }
 
     render() {
-        if (this.state.currApp !== 'email' && this.state.currApp !== 'notes') return null;
         const placeholderTxt = (this.state.currApp === 'email') ? 'Search email..' :
             'Search a note..'
-
+        const { currApp } = this.state;
         return (
             <div className="main-search">
-                <input onChange={this.handleChange} placeholder={placeholderTxt} type="search" />
+                {(currApp === 'email' || currApp === 'notes') &&
+                    <input onChange={this.handleChange} placeholder={placeholderTxt} type="search" />}
             </div>
         )
 

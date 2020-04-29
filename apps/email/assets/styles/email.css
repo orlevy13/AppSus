@@ -133,10 +133,12 @@ body {
 
 .email-subj {
     min-width: max-content;
-    margin-right: 3px;
+    margin-right: 10px;
+    font-size: 0.9rem;
 }
 
 .email-body {
+    font-size: 0.8rem;
     color: #a3a3a3;
 }
 

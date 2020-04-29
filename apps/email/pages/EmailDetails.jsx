@@ -10,6 +10,10 @@ export default class EmailDetails extends React.Component {
 
     componentDidMount() {
         const id = this.props.match.params.emailId
+        emailService.markAsRead(id)
+            .then(() => {
+                console.log('Marked as read!')
+            });
 
         emailService.getById(id)
             .then(email => {
@@ -31,7 +35,7 @@ export default class EmailDetails extends React.Component {
                         <div className="flex space-between">
                             <p>From: {from}</p>
                             <div>
-                                <p>{sentAt}</p>
+                                <p> {new Date(sentAt).toLocaleDateString("en-US")}</p>
                                 {/* <button title="Star" onClick={() => {
                                 emailService.toggleAtt(email.id, 'isStarred')
                                     .then(() => {
