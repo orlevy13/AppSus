@@ -166,6 +166,13 @@ function deleteTodo(todoId, noteId) {
 var gNotes = [
     {
         id: utilService.makeId(4),
+        type: "NoteVid",
+        isPinned: true,
+        info: { url: "https://www.youtube.com/embed/LSFkZi8nNXo", title: "Vid" },
+        style: { backgroundColor: "rgb(255, 194, 101)" }
+    },
+    {
+        id: utilService.makeId(4),
         type: "NoteImg",
         isPinned: true,
         info: { url: "https://images.pexels.com/photos/1762851/pexels-photo-1762851.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260", title: "Woof!" },
@@ -180,13 +187,6 @@ var gNotes = [
     },
     {
         id: utilService.makeId(4),
-        type: "NoteVid",
-        isPinned: true,
-        info: { url: "https://www.youtube.com/embed/LSFkZi8nNXo", title: "Vid" },
-        style: { backgroundColor: "rgb(255, 194, 101)" }
-    },
-    {
-        id: utilService.makeId(4),
         type: "NoteTxt",
         isPinned: true,
         txt: "Remember the good times",
@@ -196,7 +196,7 @@ var gNotes = [
         id: utilService.makeId(4),
         type: "NoteTxt",
         isPinned: true,
-        txt: "This is a looong text: Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely ",
+        txt: "This is a looong text: Coding is lovely Coding is lovely Coding is lovely Coding is lovely Coding is lovely Coding is lovely Coding is lovely Coding is lovely Coding is lovely Coding is lovely Coding is lovely Coding is lovely Coding is lovely Coding is lovely Coding is lovely Coding is lovely Coding is lovely Coding is lovely Coding is lovely Coding is lovely Coding is lovely Coding is lovely Coding is lovely Coding is lovely Coding is lovely Coding is lovely Coding is lovely Coding is lovely Coding is lovely Coding is lovely Coding is lovely Coding is lovely Coding is lovely Coding is lovely Coding is lovely Coding is lovely Coding is lovely Coding is lovely ",
         style: { backgroundColor: "rgb(255, 224, 130)" }
     },
     {
