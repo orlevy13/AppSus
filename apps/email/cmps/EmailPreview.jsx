@@ -8,7 +8,7 @@ export default function EmailPreview({ email }) {
         "/apps/email/assets/imgs/star.png";
 
     var envelopeImgSrc = email.isRead ? "/apps/email/assets/imgs/open-mail.png" :
-        "/apps/email/assets/imgs/close-mail.png"
+        "/apps/email/assets/imgs/close-mail.png";
 
     var deleteImgSrc = "/apps/email/assets/imgs/bin.png";
 
