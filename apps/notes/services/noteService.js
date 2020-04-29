@@ -11,7 +11,8 @@ export default {
     addTodo,
     getIndexById,
     toggleIsDone,
-    onChangeBgColor
+    onChangeBgColor,
+    deleteTodo
 }
 
 const KEY = 'notes';
@@ -141,17 +142,30 @@ function addNoteTodo(note) {
 }
 
 function addTodo(txt, noteId) {
-    gNotes[getIndexById(noteId)].info.todos.unshift({ txt, doneAt: Date.now() })
+    gNotes[getIndexById(noteId)].info.todos.unshift({ txt, doneAt: null })
     storageService.store(KEY, gNotes);
-    return Promise.resolve('x');
+    return Promise.resolve();
 }
 
 function toggleIsDone(todoId, noteId) {
     const note = gNotes[getIndexById(noteId)]
+    console.log('note',note);
+    
     const todoIndex = note.info.todos.findIndex(todo => todo.id === todoId)
+    console.log('todoIndex', todoIndex);
+    
     const todo = note.info.todos[todoIndex]
     todo.isDone = !todo.isDone
-    return Promise.resolve(note.info.todos[todoIndex])
+    if (!todo.isDone) todo.doneAt = Date.now();
+    return Promise.resolve()
+}
+
+function deleteTodo(todoId, noteId) {
+    const note = gNotes[getIndexById(noteId)]
+    const todoIndex = note.info.todos.findIndex(todo => todo.id === todoId)
+    gNotes[getIndexById(noteId)].info.todos.splice(todoIndex,1)
+
+    return Promise.resolve()
 }
 
 var gNotes = [
@@ -211,8 +225,8 @@ var gNotes = [
         type: "NoteTodo",
         isPinned: true,
         info: {
-            label: "Things for today", todos: [{ id: utilService.makeId(4), txt: "Do that", doneAt: null },
-                { id: utilService.makeId(4), txt: "Do this", doneAt: 187111111 }]
+            label: "Things for today",
+            todos: [{ id: utilService.makeId(4), txt: "Do that", doneAt: null },{ id: utilService.makeId(4), txt: "Do this", doneAt: 187111111 }]
         },
         style: { backgroundColor: "rgb(255, 170, 175)" }
     }

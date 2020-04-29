@@ -3,7 +3,12 @@ import SearchBar from './SearchBar.jsx'
 const { NavLink } = ReactRouterDOM
 
 export default class AppHeader extends React.Component {
-
+    state = {
+        isShown: false
+    }
+    toggleNav = () => {
+        this.setState(prevState => ({isShown: !prevState.isShown}))
+    }
     render() {
         return (
             <header className="flex space-between">
@@ -14,7 +19,8 @@ export default class AppHeader extends React.Component {
                     <p>First React project</p>
                 </div></NavLink>
                 <SearchBar></SearchBar>
-                <NavBar />
+                <button onClick={this.toggleNav}>%%</button>
+                {this.state.isShown && <NavBar />}
             </header>
         )
     }
