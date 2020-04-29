@@ -16,7 +16,7 @@ export default class NoteTodo extends React.Component {
 
 	onAddTodo = (txt, noteId) => {
 		noteService.addTodo(txt, noteId)
-			.then((todo) => this.loadTodos());
+			.then(() => this.loadTodos());
 	}
 
 	loadTodos = () => {
@@ -29,12 +29,12 @@ export default class NoteTodo extends React.Component {
 
 	toggleIsDone = (todoId, noteId) => {
 		noteService.toggleIsDone(todoId, noteId)
-			.then((todo) => this.loadTodos());
+			.then(() => this.loadTodos());
 	}
 
 	deleteTodo = (todoId, noteId) => {
 		noteService.deleteTodo(todoId, noteId)
-			.then((todo) => this.loadTodos());
+			.then(() => this.loadTodos());
 	}
 
 	render() {
@@ -46,15 +46,13 @@ export default class NoteTodo extends React.Component {
 				<h4>{this.props.note.info.label}:</h4>
 				<ul className="margin clean-list" >
 					{this.props.note.info.todos.map((todo) => {
-						return <div className="flex space-between align-center">
+						return <div key={todo.id} className="flex space-between align-center">
 							<li className={(todo.isDone) ? 'todo-done' : ''}
-								key={todo.id}
 								onClick={() => {
 									this.toggleIsDone(todo.id, this.props.note.id)
 								}}>{todo.txt}</li>
 
-							<button onClick={(e) => {
-								// e.preventDefault()
+							<button onClick={() => {
 								this.deleteTodo(todo.id, this.props.note.id)
 							}}>
 								<img className="delete-todo-img"
