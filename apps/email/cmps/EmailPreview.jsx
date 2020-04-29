@@ -4,25 +4,27 @@ import eventBus from '../../../services/eventBusService.js';
 const { NavLink } = ReactRouterDOM
 
 export default function EmailPreview({ email }) {
-    var starImgSrc = email.isStarred ? "./../apps/email/assets/imgs/starred.png" :
-        "./../apps/email/assets/imgs/star.png";
+    var starImgSrc = email.isStarred ? "../../apps/email/assets/imgs/starred.png" :
+        "../../apps/email/assets/imgs/star.png";
 
-    var envelopeImgSrc = email.isRead ? "./../apps/email/assets/imgs/open-mail.png" :
-        "./../apps/email/assets/imgs/close-mail.png"
+    var envelopeImgSrc = email.isRead ? "../../apps/email/assets/imgs/open-mail.png" :
+        "../../apps/email/assets/imgs/close-mail.png"
 
-    var deleteImgSrc = "./../apps/email/assets/imgs/bin.png";
+    var deleteImgSrc = "../../apps/email/assets/imgs/bin.png";
 
     return (
         <NavLink exact to='/email/details'>
             <article className={`email-preview flex align-center ${email.isRead ? '' : 'bold'}`} >
-                <button title="Delete" onClick={() => {
+                <button title="Delete" onClick={(ev) => {
+                    ev.preventDefault();
                     emailService.removeEmail(email.id)
                         .then(() => {
                             eventBus.emit('emails-changed', null)
                         });
                 }} className="del-btn"><img height="15" src={deleteImgSrc} /></button>
 
-                <button title="Star" onClick={() => {
+                <button title="Star" onClick={(ev) => {
+                    ev.preventDefault();
                     emailService.toggleAtt(email.id, 'isStarred')
                         .then(() => {
                             console.log('star toggled!')
@@ -32,7 +34,8 @@ export default function EmailPreview({ email }) {
                     <img height="15" src={starImgSrc} />
                 </button>
 
-                <button title="Read/Unread" onClick={() => {
+                <button title="Read/Unread" onClick={(ev) => {
+                    ev.preventDefault();
                     emailService.toggleAtt(email.id, 'isRead')
                         .then(() => {
                             console.log('Read toggled!')

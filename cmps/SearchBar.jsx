@@ -26,24 +26,14 @@ export default class SearchBar extends React.Component {
     }
 
     render() {
-
-        // { currApp } = this.state;
-        // switch (note.type) {
-        //     case "NoteTxt":
-        //         return <NoteTxt note={note} />
-        //     case "NoteImg":
-        //         return <NoteImg note={note} />
-        //     case "NoteVid":
-        //         return <NoteVid note={note} />
-        //     case "NoteTodo":
-        //         return <NoteTodo note={note} />
-        // }
-
+        console.log('this.state.currApp', this.state.currApp)
+        if (this.state.currApp !== 'email' && this.state.currApp !== 'notes') return null;
         return (
             <div>
                 <input onChange={this.handleChange} placeholder="blabla" type="search" />
             </div>
         )
+
     }
 
 }
