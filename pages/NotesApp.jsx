@@ -15,6 +15,12 @@ export default class NotesApp extends React.Component {
 
         eventBus.on('togglePin', (isPinned) => this.loadNotes());
         eventBus.on('deletePin', (noteId) => this.loadNotes());
+        eventBus.on('changeBackground', (noteId, color) => this.onChangeBgColor(noteId, color));
+    }
+
+    onChangeBgColor = (noteId, color) => {
+        noteService.onChangeBgColor(noteId, color)
+        this.loadNotes()
         eventBus.emit('set-page', { app: 'notes' });
 
         eventBus.on('search-note', (data) => {

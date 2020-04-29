@@ -15,7 +15,7 @@ export default class BookDetails extends React.Component {
         saleImg: ''
     }
 
-    componentDidUpdate(prevProps) {  /// ****** to 
+    componentDidUpdate(prevProps) {   
         if (prevProps.match.params.bookid !== this.props.match.params.bookid) {
             this.loadBook();
         }
