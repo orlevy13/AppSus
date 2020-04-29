@@ -1,5 +1,6 @@
 import NotePinBtn from '../cmps/NotePinBtn.jsx'
 import NoteDelete from '../cmps/NoteDelete.jsx';
+import NoteBackground from '../cmps/NoteBackground.jsx';
 import noteService from '../apps/notes/services/noteService.js';
 
 
@@ -35,7 +36,7 @@ export default class NoteTodo extends React.Component {
 		const { txt } = this.state;
 		if (!this.props.note.info) return <p>'Loading...'</p>
 		return ( 
-			<article className="note-preview ">
+			<article className="note-preview "  style={this.props.note.style} >
 				<NotePinBtn note={this.props.note} />
 				<h4>{this.props.note.info.label}:</h4>
 				<div className="margin" >
@@ -44,6 +45,7 @@ export default class NoteTodo extends React.Component {
 					<div className="flex align-center justify-center"><input className="add-todo-input" type="text" name="addTodo" value={txt} onChange={this.handleChange} />
 					<button onClick={()=>{this.onAddTodo(txt,this.props.note.id)}}><img className="add-todo-img" src="../apps/notes/assets/img/plus.png"/></button>
 					<NoteDelete note={this.props.note} />
+					<NoteBackground noteId={this.props.note.id} />
 				</div>
 			</article>
 		);

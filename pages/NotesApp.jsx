@@ -14,9 +14,14 @@ export default class NotesApp extends React.Component {
         this.loadNotes();
         eventBus.on('togglePin', (isPinned) => this.loadNotes());
         eventBus.on('deletePin', (noteId) => this.loadNotes());
+        eventBus.on('changeBackground', (noteId, color) => this.onChangeBgColor(noteId, color));
     }
 
-    // function loadNotes() - will get notes from service with filterBy + update state
+    onChangeBgColor = (noteId, color) => {
+        noteService.onChangeBgColor(noteId, color)
+        this.loadNotes()
+    }
+
     loadNotes = () => {
         noteService.query(this.state.filterBy)
             .then((notes) => this.setState({ notes }))
@@ -25,13 +30,11 @@ export default class NotesApp extends React.Component {
             })
     }
 
-    // function onAddNote(note) - request to add note in service, reuse of the function loadNotes()
     onAddNote = (note) => {
         noteService.addNote(note)
             .then((note) => this.loadNotes());
     }
 
-    // render - sent notes from state to notelist + function onAddNote
     render() {
 
         const { notes } = this.state;

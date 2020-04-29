@@ -41,7 +41,7 @@ export default class AddNote extends React.Component {
         return (
             <form>
                 <div className="note-type-icons flex justify-center">
-                    <p className ="intro-text">First choose type of note</p>
+                    <p className ="intro-text">What kind of note?</p>
                     <label><input name="type" value="NoteTxt" type="radio" onChange={this.handleChange}  />
                         <img src="../apps/notes/assets/img/addtext.png"/></label>
                     <label><input name="type" value="NoteImg" type="radio" onChange={this.handleChange}  />
@@ -56,6 +56,7 @@ export default class AddNote extends React.Component {
 
                     <button className="add-note-btn" type="submit" onClick={(e) => {
                         this.props.onAddNote(this.state);
+                        this.setState({txt: ''})
                         console.log('clicked add!');
                         e.preventDefault();
                     }} ><img src="../apps/notes/assets/img/plus.png" /></button>

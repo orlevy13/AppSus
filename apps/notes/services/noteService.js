@@ -1,13 +1,33 @@
 import storageService from '../../../services/storageService.js';
 import utilService from '../../../services/utilService.js';
 
-export default { addNote, getUnPinnedNotes, getPinnedNotes, togglePinNote, query, deleteNote, addTodo, getIndexById, toggleIsDone }
+export default {
+    addNote,
+    getUnPinnedNotes,
+    getPinnedNotes,
+    togglePinNote,
+    query,
+    deleteNote,
+    addTodo,
+    getIndexById,
+    toggleIsDone,
+    onChangeBgColor
+}
 
 const KEY = 'notes';
 
 function query(filterBy) {
     if (!filterBy) return Promise.resolve(gNotes);
     if (filterBy) console.log('THERE\'S A FILTER BUT THE FUNCTION DOESN\'T ACTUALLY FILTER!!')
+}
+
+function onChangeBgColor({noteId, backgroundColor}) {
+    console.log("noteId, backgroundColor",noteId, backgroundColor);
+    
+    const noteIdx = getIndexById(noteId)
+    gNotes[noteIdx].style = { ...gNotes[noteIdx].style, backgroundColor }
+    storageService.store(KEY, gNotes)
+    return Promise.resolve();
 }
 
 function togglePinNote(noteId) {
@@ -129,16 +149,67 @@ function toggleIsDone(todoId, noteId) {
     return Promise.resolve(note.info.todos[todoIndex])
 }
 
-
 var gNotes = [
     // { id: utilService.makeId(4), type: "NoteTxt", isPinned: false, txt: "Watch a Movie!" },
     // { id: utilService.makeId(4), type: "NoteTxt", isPinned: false, txt: "Set State :)" },
-    { id: utilService.makeId(4), type: "NoteImg", isPinned: false, info: { url: "https://images.pexels.com/photos/1762851/pexels-photo-1762851.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260", title: "Woof!" }, style: { backgroundColor: "#00d" } },
-    { id: utilService.makeId(4), type: "NoteVid", isPinned: true, info: { url: "https://www.youtube.com/embed/LSFkZi8nNXo", title: "Vid" }, style: { backgroundColor: "#00d" } },
-    { id: utilService.makeId(4), type: "NoteTxt", isPinned: false, txt: "Remember the good times" },
-    { id: utilService.makeId(4), type: "NoteTxt", isPinned: true, txt: "This is a looong text: Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely " },
-    { id: utilService.makeId(4), type: "NoteTxt", isPinned: true, txt: "try to delete me" },
-    { id: utilService.makeId(4), type: "NoteTxt", isPinned: true, txt: "unpin me!" },
-    { id: utilService.makeId(4), type: "NoteTodo", isPinned: true, info: { label: "Things for today", todos: [{ id: utilService.makeId(4), txt: "Do that", doneAt: null }, { id: utilService.makeId(4), txt: "Do this", doneAt: 187111111 }] } }
+    {
+        id: utilService.makeId(4),
+        type: "NoteImg",
+        isPinned: false,
+        info: { url: "https://images.pexels.com/photos/1762851/pexels-photo-1762851.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260", title: "Woof!" },
+        style: { backgroundColor: "white" }
+    },
+    {
+        id: utilService.makeId(4),
+        type: "NoteImg",
+        isPinned: false,
+        info: { url: "https://images.pexels.com/photos/1762851/pexels-photo-1762851.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260", title: "Woof!" },
+        style: { backgroundColor: "white" }
+    },
+    {
+        id: utilService.makeId(4),
+        type: "NoteVid",
+        isPinned: false,
+        info: { url: "https://www.youtube.com/embed/LSFkZi8nNXo", title: "Vid" },
+        style: { backgroundColor: "rgb(255, 194, 101)" }
+    },
+    {
+        id: utilService.makeId(4),
+        type: "NoteTxt",
+        isPinned: false,
+        txt: "Remember the good times",
+        style: { backgroundColor: "rgb(255, 224, 130)" }
+    },
+    {
+        id: utilService.makeId(4),
+        type: "NoteTxt",
+        isPinned: true,
+        txt: "This is a looong text: Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely Codding is lovely ",
+        style: { backgroundColor: "rgb(255, 224, 130)" }
+    },
+    {
+        id: utilService.makeId(4),
+        type: "NoteTxt",
+        isPinned: true,
+        txt: "try to delete me",
+        style: { backgroundColor: "rgb(255, 224, 130)" }
+    },
+    {
+        id: utilService.makeId(4),
+        type: "NoteTxt",
+        isPinned: true,
+        txt: "unpin me!",
+        style: { backgroundColor: "rgb(255, 224, 130)" }
+    },
+    {
+        id: utilService.makeId(4),
+        type: "NoteTodo",
+        isPinned: true,
+        info: {
+            label: "Things for today", todos: [{ id: utilService.makeId(4), txt: "Do that", doneAt: null },
+                { id: utilService.makeId(4), txt: "Do this", doneAt: 187111111 }]
+        },
+        style: { backgroundColor: "rgb(255, 170, 175)" }
+    }
 ];
 gNotes = storageService.load(KEY) || gNotes;

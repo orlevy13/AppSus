@@ -2,6 +2,7 @@
 @import 'basics.css';
 @import '../../apps/email/assets/styles/email.css';
 @import '../../apps/books/assets/styles/book.css';
+@import '../../apps/notes/assets/styles/note.css';
 
 body {
     margin: 0;
@@ -16,6 +17,7 @@ header {
     color: #2196f3;
     text-align: center;
     box-shadow: 0 0 4px 0px lightgrey;
+    z-index: 999;
 }
 .logo-txt {
     color: #2196f3;
@@ -35,7 +37,7 @@ header {
 }
 header p {
     margin-top: 5px;
-    color: grey;
+    color: #b9b9b9;
     letter-spacing: 0.45em;
     margin-left: 5px;
     font-size: 0.7em;
@@ -50,115 +52,7 @@ label img {
     cursor: pointer;
 }
 
-.intro-text {
-    color: grey;
-    padding: 10px;
-}
-.note-type-icons {
-    align-items: baseline;
-    padding: 10px;
-}
 
-.note-type-icons * {
-    margin-right: 10px ;
-    height: 40px;
-    vertical-align: middle;
-    
-}
-
-.note-type-icons * :checked {
-    background-color: black;
-}
-.note-type-icons input {
-    margin: 3px;
-}
-
-.note-add-text {     /*  SEARCH  */
-    padding: 15px;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    width: 600px;
-    /* min-width: 400px; */
-    font-size: 1.2em;
-    margin: 10px;
-}
-.add-note-btn img {
-    width: 60px;
-    /* height: 50px; */
-}
-
-.notes-page {
-    width: 100%;
-    margin-bottom: 50px;
-}
-
-/* Notes app */
-
-.notes-list {
-    width: 100%;
-}
-
-.pinned-others {
-    margin: 20px 10px 0;
-    color: rgb(180, 180, 180);
-}
-
-.notes-section:last-of-type {
-    margin-bottom: 200px;
-}
-
-.note-preview {
-    background-color: #fff;
-    margin: 8px;
-    padding: 15px;
-    padding-bottom: 5px;
-    width: 300px;
-    /* border: 1px solid lightgrey; */
-    border-radius: 10px;
-    /* word-break: break-all; */
-    white-space: normal;
-    box-shadow: 0 0 4px 0px lightgrey;
-    position: relative;
-}
-
-.note-preview button {
-    background-color: transparent;
-    margin: 5px;
-}
-
-.todo-done {
-    text-decoration: line-through;
-}
-
-.add-todo-input {
-    border-radius: 3px;
-    border: none;
-    outline: none;
-    box-shadow: 0 0 4px 0px lightgrey;
-    padding: 5px;
-    margin: 8px;
-}
-
-.pin-btn {
-    position: absolute;
-    right: 3px;
-    top: 3px;
-    margin: 0;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.404);
-    padding: 8px;
-}
-.pinned-img {
-    filter: grayscale(100%);
-}
-.unpinned-img , .pinned-img , .trash , .add-todo-img {
-    width: 20px;
-}
-
-.note-img-preview  {
-    width: 100%;
-}
 
 
 /* ************************/
