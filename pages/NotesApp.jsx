@@ -9,7 +9,7 @@ export default class NotesApp extends React.Component {
         notes: null,
         filterBy: null
     };
-    // didMount- loadNotes()
+    
     componentDidMount() {
         this.loadNotes();
 
@@ -24,9 +24,7 @@ export default class NotesApp extends React.Component {
         })
     }
 
-    // function loadNotes() - will get notes from service with filterBy + update state
     loadNotes = () => {
-        console.log(this.state.filterBy, 'filterby in state');
 
         noteService.query(this.state.filterBy)
             .then((notes) => this.setState({ notes }))
@@ -35,13 +33,11 @@ export default class NotesApp extends React.Component {
             })
     }
 
-    // function onAddNote(note) - request to add note in service, reuse of the function loadNotes()
     onAddNote = (note) => {
         noteService.addNote(note)
             .then((note) => this.loadNotes());
     }
 
-    // render - sent notes from state to notelist + function onAddNote
     render() {
 
         const { notes } = this.state;

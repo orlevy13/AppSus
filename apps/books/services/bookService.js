@@ -83,7 +83,6 @@ function getCurrencySymbol(currencyCode) {
 }
 
 function addReview(id, review) {
-    console.log('review', review);
 
     const book = gBooks.find((book) => {
         return book.id === id
@@ -92,7 +91,6 @@ function addReview(id, review) {
     if (!book) return Promise.reject("book not found!")
     if (!book.reviews) book.reviews = [];
     review.id = utilService.makeId();
-    console.log('id at book service', review.id);
 
     book.reviews.push(review);
     storageService.store(BOOKS_KEY, gBooks);
@@ -100,18 +98,13 @@ function addReview(id, review) {
 }
 
 function removeReview(bookId, reviewId) {
-    console.log('bookid', bookId);
     const book = gBooks.find((book) => { return book.id === bookId });
-    console.log(book);
     if (!book) return Promise.reject('book not found');
     if (!book.reviews) return Promise.reject('no reviews');
-    console.log('service review id', reviewId);
-    console.log(book.reviews);
     const reviewIdx = book.reviews.findIndex((review) => {
 
         return review.id === reviewId
     });
-    console.log('review index', reviewIdx);
 
     if (reviewIdx === -1) return Promise.reject(`review with id ${reviewId} not found`);
     book.reviews.splice(reviewIdx, 1);

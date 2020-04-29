@@ -10,7 +10,6 @@ export default class SearchBar extends React.Component {
 
     componentDidMount() {
         eventBus.on('set-page', (data) => {
-            console.log('data', data)
             this.setState({ currApp: data.app })
         })
     }
@@ -26,7 +25,6 @@ export default class SearchBar extends React.Component {
     }
 
     render() {
-        console.log('this.state.currApp', this.state.currApp)
         if (this.state.currApp !== 'email' && this.state.currApp !== 'notes') return null;
         return (
             <div>

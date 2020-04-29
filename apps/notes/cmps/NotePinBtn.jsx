@@ -7,6 +7,6 @@ export default function NotePinBtn(props) {
         <button className="pin-btn" onClick={() => {
             noteService.togglePinNote(props.note.id);
             eventBus.emit('togglePin', {isPinned:false})
-        }} >{props.note.isPinned && <img className="pinned-img" src="../apps/notes/assets/img/pin.png"/>}{!props.note.isPinned && <img className="unpinned-img" src="../apps/notes/assets/img/pin.png" />}</button>
+        }} >{props.note.isPinned && <img className="pinned-img" src="./apps/notes/assets/img/pin.png"/>}{!props.note.isPinned && <img className="unpinned-img" src="./apps/notes/assets/img/pin.png" />}</button>
     )
 }

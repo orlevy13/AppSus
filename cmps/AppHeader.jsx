@@ -7,7 +7,7 @@ export default class AppHeader extends React.Component {
         return (
             <header className="flex space-between">
                 <div className="logo">
-                    <img className="logo-img" src="/assets/img/logo.png" />
+                    <img className="logo-img" src="./assets/img/logo.png" />
                     <a className="logo-txt">Appsus</a>
                     <p>First React project</p>
                 </div>

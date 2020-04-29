@@ -51,8 +51,6 @@ function addNote(note) {
         case 'NoteTodo':
             return Promise.resolve(addNoteTodo(note));
         default:
-            console.log('got to default');
-
             return Promise.resolve(addNoteTxt(note));
     }
 }

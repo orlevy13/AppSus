@@ -13,9 +13,7 @@ export default class AddNote extends React.Component {
         const field = target.name
         const value = target.value
 
-        this.setState(prevState => ({ ...prevState, [field]: value }), () => {
-            console.log('state', this.state)
-        })
+        this.setState(prevState => ({ ...prevState, [field]: value }))
 
     }
     render() {
@@ -34,31 +32,30 @@ export default class AddNote extends React.Component {
             case 'NoteTodo':
                 placeHolderText = 'Name your To-do list...'
                 break;
-        
+
             default: placeHolderText = 'Take a note...'
                 break;
         }
         return (
             <form>
                 <div className="note-type-icons flex justify-center">
-                    <p className ="intro-text">First choose type of note</p>
-                    <label><input name="type" value="NoteTxt" type="radio" onChange={this.handleChange}  />
-                        <img src="../apps/notes/assets/img/addtext.png"/></label>
-                    <label><input name="type" value="NoteImg" type="radio" onChange={this.handleChange}  />
-                        <img src="../apps/notes/assets/img/addimg.png"  /></label>
-                    <label><input name="type" value="NoteVid" type="radio" onChange={this.handleChange}  />
-                        <img src="../apps/notes/assets/img/addvid.png"  /></label>
-                    <label><input name="type" value="NoteTodo" type="radio" onChange={this.handleChange}  />
-                        <img src="../apps/notes/assets/img/addtodo.png"  /></label>
+                    <p className="intro-text">First choose type of note</p>
+                    <label><input name="type" value="NoteTxt" type="radio" onChange={this.handleChange} />
+                        <img src="./apps/notes/assets/img/addtext.png" /></label>
+                    <label><input name="type" value="NoteImg" type="radio" onChange={this.handleChange} />
+                        <img src="./apps/notes/assets/img/addimg.png" /></label>
+                    <label><input name="type" value="NoteVid" type="radio" onChange={this.handleChange} />
+                        <img src="./apps/notes/assets/img/addvid.png" /></label>
+                    <label><input name="type" value="NoteTodo" type="radio" onChange={this.handleChange} />
+                        <img src="./apps/notes/assets/img/addtodo.png" /></label>
                 </div>
                 <div className="flex align-center justify-center ">
                     <input className="note-add-text" name="txt" value={txt} placeholder={placeHolderText} type="text" onChange={this.handleChange} />
 
                     <button className="add-note-btn" type="submit" onClick={(e) => {
                         this.props.onAddNote(this.state);
-                        console.log('clicked add!');
                         e.preventDefault();
-                    }} ><img src="../apps/notes/assets/img/plus.png" /></button>
+                    }} ><img src="./apps/notes/assets/img/plus.png" /></button>
                 </div>
             </form >
         )

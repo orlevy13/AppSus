@@ -38,8 +38,6 @@ export default class BookDetails extends React.Component {
     }
 
     deleteReview = (reviewid) => {
-        console.log('review id', reviewid);
-        console.log(this.state.book)
         bookService.removeReview(this.state.book.id, reviewid)
             .then((book) => {
                 this.setState({ book })
