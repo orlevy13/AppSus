@@ -1,5 +1,17 @@
 /* HELPERS */
 
+.block {
+    display: block;
+}
+
+.inline {
+    display: inline;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
 /* flex-helpers */
 
 .display-none {

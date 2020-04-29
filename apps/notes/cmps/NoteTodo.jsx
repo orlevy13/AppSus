@@ -42,7 +42,7 @@ export default class NoteTodo extends React.Component {
 		if (!this.props.note.info) return <p>'Loading...'</p>
 		return (
 			<article className="note-preview " style={this.props.note.style} >
-				<NotePinBtn note={this.props.note} />
+				{this.props.note.isPinned && <NotePinBtn note={this.props.note} />}
 				<h4>{this.props.note.info.label}:</h4>
 				<ul className="margin clean-list" >
 					{this.props.note.info.todos.map((todo) => {
@@ -61,12 +61,16 @@ export default class NoteTodo extends React.Component {
 						</div>
 					})}
 				</ul>
-				<div className="flex align-center justify-center"><input className="add-todo-input" type="text" name="addTodo" value={txt} onChange={this.handleChange} />
+				<div className="add-todo flex align-center justify-center">
+					<input className="add-todo-input" type="text" name="addTodo" value={txt} onChange={this.handleChange} />
 					<button onClick={() => { this.onAddTodo(txt, this.props.note.id) }}><img className="add-todo-img" src="./apps/notes/assets/img/plus.png" /></button>
+				</div>
+				<div className="block">
 					<NoteDelete note={this.props.note} />
 					<NoteBackground noteId={this.props.note.id} />
+					{!this.props.note.isPinned && <NotePinBtn note={this.props.note} />}
 				</div>
-			</article>
+			</article >
 		);
 	}
 }

@@ -82,28 +82,48 @@
     text-decoration: line-through;
 }
 
+.add-todo {
+    margin-top: 50px;
+}
+
 .add-todo-input {
     border-radius: 3px;
     border: none;
     outline: none;
     box-shadow: 0 0 4px 0px lightgrey;
-    padding: 5px;
+    padding: 10px 20px;
     margin: 8px;
+    width: 280px;
 }
 
-.pin-btn {
+.pinned-btn {
     position: absolute;
-    right: 3px;
-    top: 3px;
+    right: -10px;
+    top: -10px;
     margin: 0;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.404);
     padding: 8px;
 }
 .pinned-img {
     filter: grayscale(100%);
+    /* position: absolute; */
+    /* right: 3px; */
+    /* top: 3px; */
+    /* margin: 0; */
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.404);
+    /* padding: 8px; */
+    width: 20px;
+    height: 20px;
 }
-.unpinned-img , .pinned-img , .trash , .add-todo-img , .bgcolor , .delete-todo-img {
+/* .unpinned-btn{
+
+}
+.unpinned-img {
+    
+} */
+
+.unpinned-img  , .trash , .add-todo-img , .bgcolor , .delete-todo-img {
     height: 15px;
 }
 .delete-todo-img {
@@ -113,4 +133,8 @@
 
 .note-img-preview  {
     width: 100%;
+}
+
+.block {
+    min-width: 100px;
 }
