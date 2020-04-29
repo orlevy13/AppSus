@@ -174,28 +174,28 @@ var gNotes = [
     {
         id: utilService.makeId(4),
         type: "NoteImg",
-        isPinned: false,
+        isPinned: true,
         info: { url: "https://images.pexels.com/photos/1762851/pexels-photo-1762851.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260", title: "Woof!" },
         style: { backgroundColor: "white" }
     },
     {
         id: utilService.makeId(4),
         type: "NoteImg",
-        isPinned: false,
+        isPinned: true,
         info: { url: "https://images.unsplash.com/photo-1588056725282-ac9b8a638036?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80", title: "Woof!" },
         style: { backgroundColor: "white" }
     },
     {
         id: utilService.makeId(4),
         type: "NoteVid",
-        isPinned: false,
+        isPinned: true,
         info: { url: "https://www.youtube.com/embed/LSFkZi8nNXo", title: "Vid" },
         style: { backgroundColor: "rgb(255, 194, 101)" }
     },
     {
         id: utilService.makeId(4),
         type: "NoteTxt",
-        isPinned: false,
+        isPinned: true,
         txt: "Remember the good times",
         style: { backgroundColor: "rgb(255, 224, 130)" }
     },
@@ -229,6 +229,37 @@ var gNotes = [
             todos: [{ id: utilService.makeId(4), txt: "Do that", doneAt: null },{ id: utilService.makeId(4), txt: "Do this", doneAt: 187111111 }]
         },
         style: { backgroundColor: "rgb(255, 170, 175)" }
+    },
+    {
+        id: utilService.makeId(4),
+        type: "NoteTodo",
+        isPinned: false,
+        info: {
+            label: "Things for today",
+            todos: [{ id: utilService.makeId(4), txt: "Do that", doneAt: null },{ id: utilService.makeId(4), txt: "Do this", doneAt: 187111111 }]
+        },
+        style: { backgroundColor: "rgb(255, 170, 175)" }
+    },
+    {
+        id: utilService.makeId(4),
+        type: "NoteTxt",
+        isPinned: false,
+        txt: "New Note!",
+        style: { backgroundColor: "rgb(255, 224, 130)" }
+    },
+    {
+        id: utilService.makeId(4),
+        type: "NoteTxt",
+        isPinned: false,
+        txt: "New Note!",
+        style: { backgroundColor: "rgb(255, 224, 130)" }
+    },
+    {
+        id: utilService.makeId(4),
+        type: "NoteTxt",
+        isPinned: false,
+        txt: "New Note!",
+        style: { backgroundColor: "rgb(255, 224, 130)" }
     }
 ];
 gNotes = storageService.load(KEY) || gNotes;

@@ -24,8 +24,6 @@ header {
     box-shadow: 0 0 4px 0px lightgrey, inset 0px -1px 2px 0px #58585842;
 }
 
-
-
 .logo-txt {
     color: #2196f3;
     font-size: 2rem;
@@ -43,6 +41,7 @@ header {
 .logo {
     margin-left: 30px;
     margin-top: 10px;
+    display: inline-block;
 }
 
 header p {
