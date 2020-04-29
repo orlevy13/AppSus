@@ -11,7 +11,8 @@ export default class LongTxt extends React.Component {
         this.setState({ txt: txt, shortTxt: txt.slice(0, length) + '...' })
     }
 
-    toggleShown = () => {
+    toggleShown = (ev) => {
+        ev.preventDefault();
         this.setState(prevState => ({ isLongTxtShown: !prevState.isLongTxtShown }))
     }
 

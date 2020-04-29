@@ -1,7 +1,7 @@
 import emailService from '../services/emailService.js';
 import LongTxt from '../../../cmps/LongTxt.jsx';
 import eventBus from '../../../services/eventBusService.js';
-const { NavLink } = ReactRouterDOM
+const { Link } = ReactRouterDOM;
 
 export default function EmailPreview({ email }) {
     var starImgSrc = email.isStarred ? "./apps/email/assets/imgs/starred.png" :
@@ -13,7 +13,8 @@ export default function EmailPreview({ email }) {
     var deleteImgSrc = "./apps/email/assets/imgs/bin.png";
 
     return (
-        <NavLink exact to='/email/details'>
+
+        <Link to={`/email/details/${email.id}`}>
             <article className={`email-preview flex align-center ${email.isRead ? '' : 'bold'}`} >
                 <button title="Delete" onClick={(ev) => {
                     ev.preventDefault();
@@ -49,6 +50,6 @@ export default function EmailPreview({ email }) {
                     <LongTxt length={50} txt={email.body} />
                 </div>
             </article >
-        </NavLink>
+        </Link>
     )
 }
