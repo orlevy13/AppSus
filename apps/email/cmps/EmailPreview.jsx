@@ -4,13 +4,13 @@ import eventBus from '../../../services/eventBusService.js';
 const { NavLink } = ReactRouterDOM
 
 export default function EmailPreview({ email }) {
-    var starImgSrc = email.isStarred ? "../apps/email/assets/imgs/starred.png" :
-        "../apps/email/assets/imgs/star.png";
+    var starImgSrc = email.isStarred ? "./../apps/email/assets/imgs/starred.png" :
+        "./../apps/email/assets/imgs/star.png";
 
-    var envelopeImgSrc = email.isRead ? "../apps/email/assets/imgs/open-mail.png" :
-        "../apps/email/assets/imgs/close-mail.png"
+    var envelopeImgSrc = email.isRead ? "./../apps/email/assets/imgs/open-mail.png" :
+        "./../apps/email/assets/imgs/close-mail.png"
 
-    var deleteImgSrc = "../apps/email/assets/imgs/bin.png";
+    var deleteImgSrc = "./../apps/email/assets/imgs/bin.png";
 
     return (
         <NavLink exact to='/email/details'>

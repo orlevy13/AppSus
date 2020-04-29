@@ -7,10 +7,10 @@ const history = History.createBrowserHistory()
 import UserMsg from './cmps/UserMsg.jsx'
 import AppHeader from './cmps/AppHeader.jsx'
 import BookApp from './pages/BookApp.jsx';
-import About from './pages/about.jsx';
+import About from './pages/About.jsx';
 import BookDetails from './apps/books/pages/BookDetails.jsx';
 import BookAdd from './apps/books/pages/BookAdd.jsx';
-import Home from './pages/home.jsx';
+import Home from './pages/Home.jsx';
 import NotesApp from './pages/NotesApp.jsx';
 import EmailApp from './pages/EmailApp.jsx';
 import Sent from './apps/email/pages/Sent.jsx';
