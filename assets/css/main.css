@@ -102,3 +102,55 @@ label img {
 .margin {
     margin: 15px;
 }
+
+
+
+/* --------------- */
+.about {
+    height: 500px;
+}
+
+.about h1 {
+    
+    margin: 40px auto;
+    color: rgb(231, 231, 231);
+    font-size: 50px;
+    text-align: center;
+}
+
+.about img  {
+    width: 99vw;
+    position: fixed;
+    bottom: 0px;
+    z-index: -999;
+}
+
+.home img{
+    width: 99vw;
+    position: fixed;
+    bottom: 0px;
+    left: 0;
+    z-index: -999;
+}
+
+.home {
+    font-size: 50px;
+    margin: 50px ;
+    letter-spacing: 1em;
+    
+    width: 100px;
+    text-shadow: 4px 4px 0 #2196f3;
+}
+
+.home li {
+    margin: 30px
+}
+
+main ul > li > a {
+    color: white;
+    text-shadow: 4px 4px 0 #2196f3;
+  }
+ ul > li > a {
+    color: #2196f3;
+    /* text-shadow: 4px 4px 0 #2196f3; */
+  }
